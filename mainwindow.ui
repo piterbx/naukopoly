@@ -1,22 +1,79 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>800</width>
-    <height>600</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
-  <widget class="QStatusBar" name="statusbar"/>
- </widget>
- <resources/>
- <connections/>
-</ui>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuUstawienia">
+    <property name="title">
+     <string>Ustawienia</string>
+    </property>
+    <addaction name="actionReset"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuInformacje">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>Informacje</string>
+    </property>
+    <property name="toolTipsVisible">
+     <bool>false</bool>
+    </property>
+    <addaction name="actionRules"/>
+    <addaction name="actionAboutAuthors"/>
+   </widget>
+   <addaction name="menuUstawienia"/>
+   <addaction name="menuInformacje"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionReset">
+   <property name="text">
+    <string>Od nowa</string>
+   </property>
+   <property name="toolTip">
+    <string>Rozpocznij rozgrywkę od nowa</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Zakończ</string>
+   </property>
+   <property name="toolTip">
+    <string>Zakończ działanie programu</string>
+   </property>
+  </action>
+  <action name="actionRules">
+   <property name="text">
+    <string>Zasady gry</string>
+   </property>
+  </action>
+  <action name="actionAboutAuthors">
+   <property name="text">
+    <string>O autorach</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

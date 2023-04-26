@@ -17,8 +17,8 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>440</y>
+      <x>0</x>
+      <y>0</y>
       <width>241</width>
       <height>131</height>
      </rect>
@@ -52,6 +52,76 @@
       <string>Posiadane nieruchomości:</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>480</y>
+      <width>281</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Wykonaj akcje:</string>
+    </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>30</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Kup posesję</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>30</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Kup domek</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Rzuć kostką</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>450</y>
+      <width>131</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Trwa rzut gracza 1</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -21,6 +21,10 @@ set(PROJECT_SOURCES
         field.cpp
         board.h
         board.cpp
+        fieldproperty.cpp
+        fieldproperty.h
+        fieldprison.cpp
+        fieldprison.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

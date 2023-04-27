@@ -15,11 +15,12 @@ private:
 public:
     Field();
     // set values
-    void setSchoolName();
-    void setPropertyPrice();
-    void setHouses();
+    void setSchoolName(string inputName);
+    void setPropertyPrice(int inputPrice);
+    void setHouses(int inputHouses);
     bool HouseUpdate();
     // get values
+    // getname? index?
     int getPropertyPrice();
     int getHouses();
 };

@@ -4,3 +4,8 @@ Field::Field()
 {
 
 }
+
+void Field::setSchoolName()
+{
+
+}

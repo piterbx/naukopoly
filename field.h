@@ -5,8 +5,7 @@ using namespace std;
 
 class Field{
 private:
-        string schoolName[2];
-
+        string fieldName[2];
         int price;
         //int owner;
         int houses; // are we doing hotels?
@@ -15,7 +14,7 @@ private:
 public:
     Field();
     // set values
-    void setSchoolName(string inputName);
+    void setFieldName(string inputName);
     void setPropertyPrice(int inputPrice);
     void setHouses(int inputHouses);
     bool HouseUpdate();

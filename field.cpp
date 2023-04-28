@@ -6,9 +6,9 @@ Field::Field()
 
 }
 
-void Field::setSchoolName(string inputName)
+void Field::setFieldName(string inputName)
 {
-    schoolName[0] = inputName;
+    fieldName[0] = inputName;
 }
 
 void Field::setPropertyPrice(int inputPrice)

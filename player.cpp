@@ -30,3 +30,8 @@ int Player::getId()
 {
     return id;
 }
+
+int Player::getPrisonTime()
+{
+    return prisonTime;
+}

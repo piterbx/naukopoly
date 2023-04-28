@@ -22,6 +22,7 @@ public:
     int getPosition();
     double getAccountBalance();
     int getId();
+    int getPrisonTime();
     //getOwnedProperties(); //todo and ? which type
 
     void makeMove(); //todo throw a dice

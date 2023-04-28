@@ -19,6 +19,8 @@ set(PROJECT_SOURCES
         mainwindow.ui
         player.cpp
         player.h
+        game.cpp
+        game.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

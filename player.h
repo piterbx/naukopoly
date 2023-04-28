@@ -16,12 +16,15 @@ class Player
     std::string *ownedProperties; //? which type of this array (I'm thinking about FieldProperty array type
     int prisonTime;
 public:
+    Player() {}; //default constructor for creating table of Players in Game class
     Player(int id);
     void setPosition(int poz);
     int getPosition();
     double getAccountBalance();
+    int getId();
     //getOwnedProperties(); //todo and ? which type
 
+    void makeMove(); //todo throw a dice
     void sellProperty(); //todo
     void buyProperty(); //todo
     void buyHouse(); //todo

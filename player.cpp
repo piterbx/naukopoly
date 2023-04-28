@@ -25,3 +25,8 @@ double Player::getAccountBalance()
 {
     return accountBalance;
 }
+
+int Player::getId()
+{
+    return id;
+}

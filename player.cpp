@@ -13,9 +13,7 @@ Player::Player(int id):id(id)
 
 void Player::setPosition(int poz)
 {
-    if((poz%40)>=0 && (poz%40)<=40){
-        position = poz;
-    }
+    position = poz%40;
 }
 
 int Player::getPosition()

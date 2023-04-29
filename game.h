@@ -3,7 +3,7 @@
 #define GAME_H
 
 #include "player.h"
-
+#include "field.h"
 
 class Game
 {
@@ -11,13 +11,15 @@ class Game
     int timeLeft;
     int nrOfPlayers;
     Player* playersTab;
-
+    Field* fields;
 
 public:
     Game();
     ~Game();
     Player* getPlayersTab();
     int getNrOfPlayers();
+    Field* getFields();
+
     void checkForWin(); //todo it will be executed after single move
     void countTime(); //this function updates timeLeft of the game
 
@@ -26,6 +28,8 @@ public:
     static int getCurrentPlayer();
 
     void switchPlayer();
+
+
 };
 
 #endif // GAME_H

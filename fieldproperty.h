@@ -4,7 +4,7 @@
 
 class FieldProperty: public Field
 {
-
+    int ownerID;
 public:
     FieldProperty();
 };

@@ -23,7 +23,7 @@ public:
     // getname? index?
     int getPropertyPrice();
     int getHouses();
-    static void setValuesOfFields();
+    string getFieldName();
 };
 
 #endif // FIELD_H

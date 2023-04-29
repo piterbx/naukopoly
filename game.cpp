@@ -37,10 +37,9 @@ int Game::getCurrentPlayer()
 
 void Game::switchPlayer()
 {
-    Player* tabOfPlayers = getPlayersTab();
     int idxOfCurrentPlr = getCurrentPlayer();
     int i = 1; // set to 1 because in next line it checks for next player (current+1)
-    while(tabOfPlayers[(idxOfCurrentPlr+i)%getNrOfPlayers()].getPrisonTime()!=0){
+    while(playersTab[(idxOfCurrentPlr+i)%nrOfPlayers].getPrisonTime()!=0){
         i++;
         //todo send message to the screen (player idx in prison)
     } //check if next player is in prison (if is -> next player)

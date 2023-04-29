@@ -6,7 +6,7 @@ Player::Player(int id):id(id)
     //setting default values for new game
     position = 0; //idx of start field
     beforeMove = true;
-    accountBalance = 0;
+    accountBalance = 400;
     //todo ownedProperties = empty array;
     prisonTime = 0;
 }
@@ -34,4 +34,9 @@ int Player::getId()
 int Player::getPrisonTime()
 {
     return prisonTime;
+}
+
+void Player::makeMove()
+{
+
 }

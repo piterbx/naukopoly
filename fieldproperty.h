@@ -7,8 +7,6 @@ class FieldProperty: public Field
 
 public:
     FieldProperty();
-    void buyProperty();
-    void sellProperty();
 };
 
 #endif // FIELDPROPERTY_H

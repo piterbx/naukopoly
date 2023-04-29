@@ -19,8 +19,6 @@ set(PROJECT_SOURCES
         mainwindow.ui
         field.h
         field.cpp
-        board.h
-        board.cpp
         fieldproperty.cpp
         fieldproperty.h
         fieldprison.cpp

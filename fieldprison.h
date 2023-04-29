@@ -5,11 +5,10 @@
 class FieldPrison: public Field
 {
 private:
-    bool Prisoner;
 public:
     FieldPrison();
-    void isPlayerPrisoner(bool Prisoner);
-
+    void isPlayerPrisoner(); // for display todo
+    // setPrisonTime(use different name) for current player
 };
 
 #endif // FIELDPRISON_H

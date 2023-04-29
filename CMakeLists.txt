@@ -21,6 +21,20 @@ set(PROJECT_SOURCES
         player.h
         game.cpp
         game.h
+        field.h
+        field.cpp
+        fieldproperty.cpp
+        fieldproperty.h
+        fieldprison.cpp
+        fieldprison.h
+        fieldcard.h
+        fieldcard.cpp
+        fieldplus.cpp
+        fieldplus.h
+        fieldminus.cpp
+        fieldminus.h
+        fieldstart.h
+        fieldstart.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

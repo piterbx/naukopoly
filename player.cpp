@@ -50,11 +50,12 @@ void Player::makeMove(QLabel* label)
         this->setBeforeMove(false);
 
         srand(time(NULL));
-        this->setPosition((int)rand()%(6-1+1)+1); // from 1 to 6
-        info = QString::fromStdString("Gracz "+std::to_string(this->getId()+1)+" rusza się o "+std::to_string(this->getPosition()));
+        int move = (int)rand()%(6-1+1)+1;
+        this->setPosition(this->getPosition()+move); // from 1 to 6
+        info = QString::fromStdString("Gracz "+std::to_string(this->getId()+1)+" rusza się o "+std::to_string(move)+" na pole "+std::to_string(this->getPosition()));
         label->setText(info);
-        Game::switchPlayer();
     } else {
         label->setText("Gracz jest w wiezieniu");
     }
+    Game::switchPlayer();
 }

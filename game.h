@@ -17,7 +17,7 @@ public:
     Game();
     ~Game();
     static Player* getPlayersTab();
-    int getNrOfPlayers();
+    static int getNrOfPlayers();
     Field* getFields();
 
     void checkForWin(); //todo it will be executed after single move

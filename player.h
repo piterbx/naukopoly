@@ -1,3 +1,4 @@
+#include "qlabel.h"
 #include <iostream>
 
 
@@ -20,12 +21,13 @@ public:
     Player(int id);
     void setPosition(int poz);
     int getPosition();
+    void setBeforeMove(bool bm);
     double getAccountBalance();
     int getId();
     int getPrisonTime();
     //getOwnedProperties(); //todo and ? which type
 
-    void makeMove(); //todo throw a dice
+    void makeMove(QLabel* label); //todo throw a dice
     void sellProperty(); //todo
     void buyProperty(); //todo
     void buyHouse(); //todo

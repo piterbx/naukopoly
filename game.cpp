@@ -2,6 +2,8 @@
 #include "game.h"
 
 int Game::currentPlayer = 0; // 0 is an index of player 1
+Player* Game::playersTab = nullptr;
+int Game::nrOfPlayers = 4;
 
 Game::Game()
 {
@@ -166,14 +168,13 @@ int Game::getCurrentPlayer()
 
 void Game::switchPlayer()
 {
-    int idxOfCurrentPlr = getCurrentPlayer();
     int i = 1; // set to 1 because in next line it checks for next player (current+1)
-    while(playersTab[(idxOfCurrentPlr+i)%nrOfPlayers].getPrisonTime()!=0){
+    while(playersTab[(currentPlayer+i)%nrOfPlayers].getPrisonTime()!=0){
         i++;
         //todo send message to the screen (player idx in prison)
     } //check if next player is in prison (if is -> next player)
 
-    setCurrentPlayer(i);
+    currentPlayer = i;
 }
 
 void Game::setCurrentPlayer(int newCurrentPlayer)

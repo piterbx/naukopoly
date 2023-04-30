@@ -118,7 +118,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="labelCurrentPlayerMoveInfo">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -252,6 +252,19 @@
       <string>Posiadane nieruchomości:</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QLabel" name="labelNotification">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>290</y>
+      <width>301</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Notification</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

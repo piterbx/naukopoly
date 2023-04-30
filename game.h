@@ -9,14 +9,14 @@ class Game
 {
     int time; //in seconds
     int timeLeft;
-    int nrOfPlayers;
-    Player* playersTab;
+    static int nrOfPlayers;
+    static Player* playersTab;
     Field* fields;
 
 public:
     Game();
     ~Game();
-    Player* getPlayersTab();
+    static Player* getPlayersTab();
     int getNrOfPlayers();
     Field* getFields();
 
@@ -27,7 +27,7 @@ public:
     static void setCurrentPlayer(int newCurrentPlayer);
     static int getCurrentPlayer();
 
-    void switchPlayer();
+    static void switchPlayer();
 
 
 };

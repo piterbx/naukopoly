@@ -20,7 +20,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionReset_hovered();
+    void onPushButtonThrowADiceClicked();
 
 private:
     Ui::MainWindow *ui;

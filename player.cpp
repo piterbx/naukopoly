@@ -2,7 +2,7 @@
 #include "player.h"
 #include "game.h"
 
-Player::Player(int id):id(id)
+Player::Player()
 {
     //setting default values for new game
     position = 0; //idx of start field
@@ -27,14 +27,29 @@ void Player::setBeforeMove(bool bm)
     beforeMove = bm;
 }
 
+void Player::setAccountBalance(double ab)
+{
+    accountBalance = ab;
+}
+
 double Player::getAccountBalance()
 {
     return accountBalance;
 }
 
+void Player::setId(int id)
+{
+    this->id = id;
+}
+
 int Player::getId()
 {
     return id;
+}
+
+void Player::setPrisonTime(int time)
+{
+    prisonTime = time;
 }
 
 int Player::getPrisonTime()
@@ -46,13 +61,13 @@ void Player::makeMove(QLabel* label)
 {
     //this = current player
     QString info;
-    if(this->getPrisonTime()==0){
+    if(this->prisonTime==0){
         this->setBeforeMove(false);
 
         srand(time(NULL));
         int move = (int)rand()%(6-1+1)+1;
         this->setPosition(this->getPosition()+move); // from 1 to 6
-        info = QString::fromStdString("Gracz "+std::to_string(this->getId()+1)+" rusza się o "+std::to_string(move)+" na pole "+std::to_string(this->getPosition()));
+        info = QString::fromStdString("Gracz "+std::to_string(this->id)+" rusza się o "+std::to_string(move)+" na pole "+std::to_string(this->getPosition()));
         label->setText(info);
     } else {
         label->setText("Gracz jest w wiezieniu");

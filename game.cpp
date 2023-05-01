@@ -2,21 +2,24 @@
 #include "game.h"
 
 int Game::currentPlayer = 0; // 0 is an index of player 1
-Player* Game::playersTab = nullptr;
 int Game::nrOfPlayers = 4;
+Player* Game::playersTab = new Player[nrOfPlayers];
 
 Game::Game()
 {
     currentPlayer = 0; // set to player 1
     time = 900; //15min = 900s
     timeLeft = time;
-    nrOfPlayers = 4;
-    playersTab = new Player[nrOfPlayers];
     for(int i=0;i<nrOfPlayers;i++){
-        playersTab[i] = Player(i);
+        playersTab[i].setId(i);/*
+        playersTab[i].setAccountBalance(400);
+        playersTab[i].setPosition(0);
+        playersTab[i].setBeforeMove(true);
+        playersTab[i].setPrisonTime(0);*/
     }
 
     fields = new Field[40];
+
 
     fields[0].setFieldName("Start");
     fields[0].setPropertyPrice(0);

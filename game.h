@@ -10,7 +10,7 @@ class Game
     int time; //in seconds
     int timeLeft;
     static int nrOfPlayers;
-    static Player* playersTab;
+    static Player *playersTab;
     Field* fields;
 
 public:

@@ -88,7 +88,6 @@ void Player::makeMove(QLabel* label)
     } else {
         label->setText("Gracz jest w wiezieniu");
     }
-    Game::switchPlayer();
 }
 
 void Player::sellProperty(QLabel* label)
@@ -112,17 +111,19 @@ void Player::sellProperty(QLabel* label)
         str = QString::fromStdString("Nie można sprzedać");
         label->setText(str);
     }
+    Game::getFields()[this->position] = place; //all operations made on copy, so set copy as a original value;
 }
 
 void Player::buyProperty(QLabel *label)
 {
     Field place = Game::getFields()[this->position];
     QString str;
-    if(place.getOwner()==-1){
+    if(place.getOwner()==-1 && place.getOwner()!=this->id){
         if(this->accountBalance>=place.getPropertyPrice()){
             place.setOwner(this->id);
-            //todo table of owned properties
+            //todo table of owned properties && disabling buttons before move
             str = QString::fromStdString("Gracz "+std::to_string(this->id)+" kupił ("+std::to_string(this->position) +") "+ place.getFieldName());
+            this->accountBalance -= place.getPropertyPrice();
         } else {
             str = "Brak wystarczającej ilości pieniędzy";
         }
@@ -130,6 +131,24 @@ void Player::buyProperty(QLabel *label)
         str = "Nie można kupić pola";
     }
     label->setText(str);
+    Game::getFields()[this->position] = place;
+}
+
+void Player::buyHouse(QLabel *label)
+{
+    Field place = Game::getFields()[this->position];
+    QString str;
+    if(place.getOwner()==this->getId()){
+        if(this->accountBalance>=20){
+            if(place.canIUpgradeHouses()){
+                str = QString::fromStdString("Gracz "+std::to_string(this->id)+" kupił dom w "+place.getFieldName());
+            }
+        }
+    } else {
+        str = "Nie jesteś właścicielem tej działki";
+    }
+    label->setText(str);
+    Game::getFields()[this->position] = place;
 }
 
 int Player::getNrOfOwnedProperties() const

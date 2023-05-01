@@ -38,7 +38,7 @@ public:
     void makeMove(QLabel* label); //throw a dice
     void sellProperty(QLabel *label);
     void buyProperty(QLabel *label);
-    void buyHouse(); //todo
+    void buyHouse(QLabel *label);
 };
 
 #endif // PLAYER_H

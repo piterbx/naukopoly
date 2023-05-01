@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     QObject::connect(ui->pushButtonThrowADice, &QPushButton::clicked, this, &MainWindow::onPushButtonThrowADiceClicked);
     QObject::connect(ui->pushButtonSellProperty, &QPushButton::clicked, this, &MainWindow::onPushButtonSellPropertyClicked);
+    QObject::connect(ui->pushButtonBuyProperty, &QPushButton::clicked, this, &MainWindow::onPushButtonBuyPropertyClicked);
+    QObject::connect(ui->pushButtonBuyHouse, &QPushButton::clicked, this, &MainWindow::onPushButtonBuyHouseClicked);
 }
 
 MainWindow::~MainWindow()
@@ -35,9 +37,16 @@ void MainWindow::onPushButtonSellPropertyClicked()
 }
 
 
-void MainWindow::on_pushButtonBuyProperty_clicked()
+void MainWindow::onPushButtonBuyPropertyClicked()
 {
     //buy property
     Game::getPlayersTab()[Game::getCurrentPlayer()].buyProperty(ui->labelNotification);
+}
+
+
+void MainWindow::onPushButtonBuyHouseClicked()
+{
+    //buy a house
+    Game::getPlayersTab()[Game::getCurrentPlayer()].buyHouse(ui->labelNotification);
 }
 

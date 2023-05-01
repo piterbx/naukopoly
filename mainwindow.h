@@ -24,7 +24,9 @@ private slots:
 
     void onPushButtonSellPropertyClicked();
 
-    void on_pushButtonBuyProperty_clicked();
+    void onPushButtonBuyPropertyClicked();
+
+    void onPushButtonBuyHouseClicked();
 
 private:
     Ui::MainWindow *ui;

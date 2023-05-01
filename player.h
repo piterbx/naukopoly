@@ -14,10 +14,12 @@ class Player
     int position; //on the board
     bool beforeMove; //required for buying a house
     double accountBalance;
-    std::string *ownedProperties; //? which type of this array (I'm thinking about FieldProperty array type
+    int nrOfOwnedProperties; //lenght of ownedProperties table
+    int *ownedProperties; //consists index of property in fields array
     int prisonTime;
 public:
     Player();
+    ~Player();
     void setPosition(int poz);
     int getPosition();
     void setBeforeMove(bool bm);
@@ -27,7 +29,7 @@ public:
     int getId();
     void setPrisonTime(int time);
     int getPrisonTime();
-    //getOwnedProperties(); //todo and ? which type
+    int *getOwnedProperties();
 
     void makeMove(QLabel* label); //todo throw a dice
     void sellProperty(); //todo

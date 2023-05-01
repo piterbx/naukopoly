@@ -8,8 +8,14 @@ Player::Player()
     position = 0; //idx of start field
     beforeMove = true;
     accountBalance = 400;
-    //todo ownedProperties = empty array;
+    nrOfOwnedProperties = 0;
+    ownedProperties = new int[nrOfOwnedProperties];
     prisonTime = 0;
+}
+
+Player::~Player()
+{
+    delete [] ownedProperties;
 }
 
 void Player::setPosition(int poz)
@@ -55,6 +61,11 @@ void Player::setPrisonTime(int time)
 int Player::getPrisonTime()
 {
     return prisonTime;
+}
+
+int *Player::getOwnedProperties()
+{
+    return ownedProperties;
 }
 
 void Player::makeMove(QLabel* label)

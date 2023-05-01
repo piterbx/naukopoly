@@ -9,8 +9,8 @@ class Game
 {
     int time; //in seconds
     int timeLeft;
-    static int nrOfPlayers;
-    static Player *playersTab;
+    static const int nrOfPlayers;
+    static Player playersTab[4];
     Field* fields;
 
 public:

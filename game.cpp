@@ -2,20 +2,23 @@
 #include "game.h"
 
 int Game::currentPlayer = 0; // 0 is an index of player 1
-int Game::nrOfPlayers = 4;
-Player* Game::playersTab = new Player[nrOfPlayers];
+const int Game::nrOfPlayers = 4;
+Player Game::playersTab[nrOfPlayers];
 
 Game::Game()
 {
     currentPlayer = 0; // set to player 1
     time = 900; //15min = 900s
     timeLeft = time;
+
     for(int i=0;i<nrOfPlayers;i++){
-        playersTab[i].setId(i);/*
+        playersTab[i].setId(i);
         playersTab[i].setAccountBalance(400);
         playersTab[i].setPosition(0);
         playersTab[i].setBeforeMove(true);
-        playersTab[i].setPrisonTime(0);*/
+        playersTab[i].setPrisonTime(0);
+        /*playersTab[i].setNrOfOwnedProperties(0);
+        playersTab[i].setOwnedProperties();*/
     }
 
     fields = new Field[40];
@@ -145,7 +148,7 @@ Game::Game()
 
 Game::~Game()
 {
-    delete [] playersTab;
+    //delete [] playersTab;
     delete [] fields;
 }
 

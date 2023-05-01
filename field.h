@@ -17,6 +17,7 @@ public:
     // set values
     void setFieldName(string inputName);
     void setPropertyPrice(int inputPrice);
+    void setOwner(int owner);
     void setHouses(int inputHouses);
     bool canIUpgradeHouses();
     // get values

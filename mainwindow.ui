@@ -65,7 +65,7 @@
     <property name="title">
      <string>Make action:</string>
     </property>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="pushButtonBuyProperty">
      <property name="geometry">
       <rect>
        <x>100</x>

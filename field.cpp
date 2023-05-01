@@ -3,7 +3,7 @@
 
 Field::Field()
 {
-    owner = 5; //bank or none
+    owner = -1; //bank or none
     houses = 0;
 }
 
@@ -15,6 +15,11 @@ void Field::setFieldName(string inputName)
 void Field::setPropertyPrice(int inputPrice)
 {
     price = inputPrice;
+}
+
+void Field::setOwner(int owner)
+{
+    this->owner = owner;
 }
 
 void Field::setHouses(int inputHouses)

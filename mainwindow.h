@@ -24,6 +24,8 @@ private slots:
 
     void onPushButtonSellPropertyClicked();
 
+    void on_pushButtonBuyProperty_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

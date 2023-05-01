@@ -114,6 +114,24 @@ void Player::sellProperty(QLabel* label)
     }
 }
 
+void Player::buyProperty(QLabel *label)
+{
+    Field place = Game::getFields()[this->position];
+    QString str;
+    if(place.getOwner()==-1){
+        if(this->accountBalance>=place.getPropertyPrice()){
+            place.setOwner(this->id);
+            //todo table of owned properties
+            str = QString::fromStdString("Gracz "+std::to_string(this->id)+" kupił ("+std::to_string(this->position) +") "+ place.getFieldName());
+        } else {
+            str = "Brak wystarczającej ilości pieniędzy";
+        }
+    } else {
+        str = "Nie można kupić pola";
+    }
+    label->setText(str);
+}
+
 int Player::getNrOfOwnedProperties() const
 {
     return nrOfOwnedProperties;

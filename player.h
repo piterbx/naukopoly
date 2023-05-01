@@ -36,8 +36,8 @@ public:
     int *getOwnedProperties();
 
     void makeMove(QLabel* label); //throw a dice
-    void sellProperty(QLabel *label); //todo
-    void buyProperty(); //todo
+    void sellProperty(QLabel *label);
+    void buyProperty(QLabel *label);
     void buyHouse(); //todo
 };
 

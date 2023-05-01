@@ -30,6 +30,14 @@ void MainWindow::onPushButtonThrowADiceClicked()
 
 void MainWindow::onPushButtonSellPropertyClicked()
 {
+    //sell property
     Game::getPlayersTab()[Game::getCurrentPlayer()].sellProperty(ui->labelNotification);
+}
+
+
+void MainWindow::on_pushButtonBuyProperty_clicked()
+{
+    //buy property
+    Game::getPlayersTab()[Game::getCurrentPlayer()].buyProperty(ui->labelNotification);
 }
 

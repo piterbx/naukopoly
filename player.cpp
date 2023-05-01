@@ -9,7 +9,7 @@ Player::Player()
     beforeMove = true;
     accountBalance = 400;
     nrOfOwnedProperties = 0;
-    ownedProperties = new int[nrOfOwnedProperties];
+    ownedProperties = new int[22];
     prisonTime = 0;
 }
 
@@ -63,6 +63,11 @@ int Player::getPrisonTime()
     return prisonTime;
 }
 
+void Player::setNrOfOwnedProperties(int nr)
+{
+    nrOfOwnedProperties = nr;
+}
+
 int *Player::getOwnedProperties()
 {
     return ownedProperties;
@@ -84,4 +89,37 @@ void Player::makeMove(QLabel* label)
         label->setText("Gracz jest w wiezieniu");
     }
     Game::switchPlayer();
+}
+
+void Player::sellProperty(QLabel* label)
+{
+    Field place = Game::getFields()[this->position];
+    QString str;
+    if(this->id==place.getOwner()){
+        for(int i=0;i<this->nrOfOwnedProperties;i++){
+            if(ownedProperties[i]==this->position){
+                ownedProperties[i] = 0; //todo deleting item from player inventory
+            }
+        }
+
+        this->nrOfOwnedProperties--;
+
+        this->accountBalance += place.getPropertyPrice();
+
+        str = QString::fromStdString("Sprzedano posesje. Dodano "+std::to_string(place.getPropertyPrice())+" do konta gracza "+std::to_string(this->id));
+        label->setText(str);
+    } else {
+        str = QString::fromStdString("Nie można sprzedać");
+        label->setText(str);
+    }
+}
+
+int Player::getNrOfOwnedProperties() const
+{
+    return nrOfOwnedProperties;
+}
+
+void Player::setOwnedProperties(int *properties)
+{
+    ownedProperties = properties;
 }

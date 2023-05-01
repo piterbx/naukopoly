@@ -4,6 +4,7 @@
 int Game::currentPlayer = 0; // 0 is an index of player 1
 const int Game::nrOfPlayers = 4;
 Player Game::playersTab[nrOfPlayers];
+Field Game::fields[40];
 
 Game::Game()
 {
@@ -17,11 +18,8 @@ Game::Game()
         playersTab[i].setPosition(0);
         playersTab[i].setBeforeMove(true);
         playersTab[i].setPrisonTime(0);
-        /*playersTab[i].setNrOfOwnedProperties(0);
-        playersTab[i].setOwnedProperties();*/
+        playersTab[i].setNrOfOwnedProperties(0);
     }
-
-    fields = new Field[40];
 
 
     fields[0].setFieldName("Start");
@@ -148,8 +146,7 @@ Game::Game()
 
 Game::~Game()
 {
-    //delete [] playersTab;
-    delete [] fields;
+
 }
 
 Player *Game::getPlayersTab()

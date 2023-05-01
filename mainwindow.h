@@ -22,6 +22,8 @@ public:
 private slots:
     void onPushButtonThrowADiceClicked();
 
+    void onPushButtonSellPropertyClicked();
+
 private:
     Ui::MainWindow *ui;
 };

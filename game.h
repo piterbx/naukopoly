@@ -11,14 +11,14 @@ class Game
     int timeLeft;
     static const int nrOfPlayers;
     static Player playersTab[4];
-    Field* fields;
+    static Field fields[40];
 
 public:
     Game();
     ~Game();
     static Player* getPlayersTab();
     static int getNrOfPlayers();
-    Field* getFields();
+    static Field* getFields();
 
     void checkForWin(); //todo it will be executed after single move
     void countTime(); //this function updates timeLeft of the game

@@ -78,19 +78,6 @@
       <string>Kup posesję</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>30</y>
-       <width>80</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Kup domek</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButtonThrowADice">
      <property name="geometry">
       <rect>
@@ -104,7 +91,20 @@
       <string>Rzuć kostką</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="pushButtonSellProperty">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>30</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Sprzedaj</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
      <property name="geometry">
       <rect>
        <x>280</x>
@@ -114,7 +114,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Rzuć kostką</string>
+      <string>Kup domek</string>
      </property>
     </widget>
    </widget>

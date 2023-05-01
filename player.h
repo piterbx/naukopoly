@@ -14,9 +14,9 @@ class Player
     int position; //on the board
     bool beforeMove; //required for buying a house
     double accountBalance;
+    int prisonTime;
     int nrOfOwnedProperties; //lenght of ownedProperties table
     int *ownedProperties; //consists index of property in fields array
-    int prisonTime;
 public:
     Player();
     ~Player();
@@ -29,10 +29,14 @@ public:
     int getId();
     void setPrisonTime(int time);
     int getPrisonTime();
+    void setNrOfOwnedProperties(int nr);
+    int getNrOfOwnedProperties() const;
+
+    void setOwnedProperties(int *properties);
     int *getOwnedProperties();
 
-    void makeMove(QLabel* label); //todo throw a dice
-    void sellProperty(); //todo
+    void makeMove(QLabel* label); //throw a dice
+    void sellProperty(QLabel *label); //todo
     void buyProperty(); //todo
     void buyHouse(); //todo
 };

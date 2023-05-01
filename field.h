@@ -7,7 +7,7 @@ class Field{
 private:
         string fieldName; // "Politechnika" "Lubelska"
         int price;
-        //int owner;
+        int owner;
         int rent;
         int houses; // are we doing hotels?
         int totalValue; // price of house +
@@ -22,6 +22,7 @@ public:
     // get values
     // getname? index?
     int getPropertyPrice();
+    int getOwner();
     int getHouses();
     string getFieldName();
 };

@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     QObject::connect(ui->pushButtonThrowADice, &QPushButton::clicked, this, &MainWindow::onPushButtonThrowADiceClicked);
+    QObject::connect(ui->pushButtonSellProperty, &QPushButton::clicked, this, &MainWindow::onPushButtonSellPropertyClicked);
 }
 
 MainWindow::~MainWindow()
@@ -24,5 +25,11 @@ void MainWindow::onPushButtonThrowADiceClicked()
     //making a move on a current player
     Game::getPlayersTab()[Game::getCurrentPlayer()].makeMove(ui->labelNotification);
     //ui->labelNotification->setText("Clicked");
+}
+
+
+void MainWindow::onPushButtonSellPropertyClicked()
+{
+    Game::getPlayersTab()[Game::getCurrentPlayer()].sellProperty(ui->labelNotification);
 }
 

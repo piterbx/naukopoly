@@ -3,6 +3,7 @@
 
 Field::Field()
 {
+    owner = 5; //bank or none
     houses = 0;
 }
 
@@ -36,6 +37,11 @@ bool Field::canIUpgradeHouses()
 int Field::getPropertyPrice()
 {
     return price;
+}
+
+int Field::getOwner()
+{
+    return owner;
 }
 
 int Field::getHouses()

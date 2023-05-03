@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(ui->pushButtonSellProperty, &QPushButton::clicked, this, &MainWindow::onPushButtonSellPropertyClicked);
     QObject::connect(ui->pushButtonBuyProperty, &QPushButton::clicked, this, &MainWindow::onPushButtonBuyPropertyClicked);
     QObject::connect(ui->pushButtonBuyHouse, &QPushButton::clicked, this, &MainWindow::onPushButtonBuyHouseClicked);
+
+    g.getButtons(ui->pushButtonThrowADice, ui->pushButtonBuyProperty, ui->pushButtonSellProperty, ui->pushButtonBuyHouse);
 }
 
 MainWindow::~MainWindow()

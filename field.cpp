@@ -22,6 +22,11 @@ void Field::setOwner(int owner)
     this->owner = owner;
 }
 
+void Field::setCanBePurchased(bool canBePurchased)
+{
+    this->canBePurchased = canBePurchased;
+}
+
 void Field::setHouses(int inputHouses)
 {
     houses = inputHouses;
@@ -47,6 +52,11 @@ int Field::getPropertyPrice()
 int Field::getOwner()
 {
     return owner;
+}
+
+bool Field::getCanBePurchased()
+{
+    return canBePurchased;
 }
 
 int Field::getHouses()

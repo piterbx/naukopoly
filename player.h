@@ -12,7 +12,6 @@ class Player
 {
     int id;
     int position; //on the board
-    bool beforeMove; //required for buying a house
     double accountBalance;
     int prisonTime;
     int nrOfOwnedProperties; //lenght of ownedProperties table
@@ -22,7 +21,6 @@ public:
     ~Player();
     void setPosition(int poz);
     int getPosition();
-    void setBeforeMove(bool bm);
     void setAccountBalance(double ab);
     double getAccountBalance();
     void setId(int id);

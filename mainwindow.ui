@@ -6,15 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1202</width>
-    <height>665</height>
+    <width>1212</width>
+    <height>662</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="groupBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="sizeIncrement">
+    <size>
+     <width>16</width>
+     <height>9</height>
+    </size>
+   </property>
+   <widget class="QGroupBox" name="groupBoxPlayer1">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -26,7 +41,7 @@
     <property name="title">
      <string>Player 1</string>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="labelAccount1">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -39,7 +54,7 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Stan konta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="labelPos1">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -49,11 +64,11 @@
       </rect>
      </property>
      <property name="text">
-      <string>Posiadane nieruchomości:</string>
+      <string>Pozycja:</string>
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_2">
+   <widget class="QGroupBox" name="groupBoxMenu">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -136,7 +151,10 @@
      <string>Trwa rzut gracza 1</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox_3">
+   <widget class="QGroupBox" name="groupBoxPlayer3">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -146,9 +164,9 @@
      </rect>
     </property>
     <property name="title">
-     <string>Player 1</string>
+     <string>Player 3</string>
     </property>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="labelAccount3">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -161,7 +179,7 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Stan konta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="labelPos3">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -171,11 +189,11 @@
       </rect>
      </property>
      <property name="text">
-      <string>Posiadane nieruchomości:</string>
+      <string>Pozycja:</string>
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_4">
+   <widget class="QGroupBox" name="groupBoxPlayer4">
     <property name="geometry">
      <rect>
       <x>960</x>
@@ -185,9 +203,9 @@
      </rect>
     </property>
     <property name="title">
-     <string>Player 1</string>
+     <string>Player 4</string>
     </property>
-    <widget class="QLabel" name="label_6">
+    <widget class="QLabel" name="labelAccount4">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -200,7 +218,7 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Stan konta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_7">
+    <widget class="QLabel" name="labelPos4">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -210,11 +228,11 @@
       </rect>
      </property>
      <property name="text">
-      <string>Posiadane nieruchomości:</string>
+      <string>Pozycja:</string>
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_5">
+   <widget class="QGroupBox" name="groupBoxPlayer2">
     <property name="geometry">
      <rect>
       <x>950</x>
@@ -224,9 +242,9 @@
      </rect>
     </property>
     <property name="title">
-     <string>Player 1</string>
+     <string>Player 2</string>
     </property>
-    <widget class="QLabel" name="label_8">
+    <widget class="QLabel" name="labelAccount2">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -239,7 +257,7 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Stan konta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_9">
+    <widget class="QLabel" name="labelPos2">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -249,7 +267,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Posiadane nieruchomości:</string>
+      <string>Pozycja:</string>
      </property>
     </widget>
    </widget>
@@ -272,7 +290,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1202</width>
+     <width>1212</width>
      <height>21</height>
     </rect>
    </property>

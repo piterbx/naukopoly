@@ -208,12 +208,12 @@ Field *Game::getFields()
     return fields;
 }
 
-void Game::getButtons(QPushButton *b1, QPushButton *b2, QPushButton *b3, QPushButton *b4)
+void Game::getButtons(Ui::MainWindow *ui)
 {
-    btn1 = b1;
-    btn2 = b2;
-    btn3 = b3;
-    btn4 = b4;
+    btn1 = ui->pushButtonThrowADice;
+    btn2 = ui->pushButtonBuyProperty;
+    btn3 = ui->pushButtonSellProperty;
+    btn4 = ui->pushButtonBuyHouse;
     Game::updateButtons();
 }
 
@@ -257,6 +257,7 @@ void Game::switchPlayer()
 {
     currentPlayer = (currentPlayer+1)%nrOfPlayers;
     beforeMove = true;
+
     updateButtons();
 }
 

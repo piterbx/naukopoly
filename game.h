@@ -5,6 +5,7 @@
 #include "player.h"
 #include "field.h"
 #include "qpushbutton.h"
+#include "ui_mainwindow.h"
 
 class Game
 {
@@ -29,7 +30,7 @@ public:
 
     void checkForWin(); //todo it will be executed after single move
     void countTime(); //this function updates timeLeft of the game
-    void getButtons(QPushButton *b1, QPushButton *b2, QPushButton *b3, QPushButton *b4);
+    void getButtons(Ui::MainWindow *ui);
     static void updateButtons();
 
     static int currentPlayer; // is an index of player in playersTab

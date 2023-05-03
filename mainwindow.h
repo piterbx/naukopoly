@@ -18,6 +18,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void setLabelCurrentPlayer();
+    void setLabelAccount();
+    void setLabelPosition();
 
 private slots:
     void onPushButtonThrowADiceClicked();

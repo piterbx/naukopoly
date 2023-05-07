@@ -8,7 +8,8 @@ Player::Player()
     position = 0; //idx of start field
     accountBalance = 400;
     nrOfOwnedProperties = 0;
-    ownedProperties = new int[22];
+    ownedProperties->setHead(nullptr);
+    ownedProperties->setTail(nullptr);
     prisonTime = 0;
 }
 
@@ -57,14 +58,9 @@ int Player::getPrisonTime()
     return prisonTime;
 }
 
-void Player::setNrOfOwnedProperties(int nr)
+void Player::setNrOfOwnedProperties()
 {
-    nrOfOwnedProperties = nr;
-}
-
-int *Player::getOwnedProperties()
-{
-    return ownedProperties;
+    nrOfOwnedProperties = ownedProperties->getSize();
 }
 
 void Player::makeMove(QLabel* label)
@@ -91,13 +87,11 @@ void Player::sellProperty(QLabel* label)
     Field &place = Game::getFields()[this->position]; //we want to work on original not on copy
     QString str;
     if(this->id==place.getOwner()){
-        for(int i=0;i<this->nrOfOwnedProperties;i++){
+        /*for(int i=0;i<this->nrOfOwnedProperties;i++){
             if(ownedProperties[i]==this->position){
                 ownedProperties[i] = 0; //todo deleting item from player inventory
             }
-        }
-
-        this->nrOfOwnedProperties--;
+        }*/
 
         place.setOwner(-1);
         this->accountBalance += place.getPropertyPrice();
@@ -149,9 +143,4 @@ void Player::buyHouse(QLabel *label)
 int Player::getNrOfOwnedProperties() const
 {
     return nrOfOwnedProperties;
-}
-
-void Player::setOwnedProperties(int *properties)
-{
-    ownedProperties = properties;
 }

@@ -1,3 +1,4 @@
+#include "listoneway.h"
 #include "qlabel.h"
 #include <iostream>
 
@@ -14,8 +15,8 @@ class Player
     int position; //on the board
     double accountBalance;
     int prisonTime;
-    int nrOfOwnedProperties; //lenght of ownedProperties table
-    int *ownedProperties; //consists index of property in fields array
+    int nrOfOwnedProperties; //length of ownedProperties
+    SingleList *ownedProperties; //list! of property indexes
 public:
     Player();
     ~Player();
@@ -27,11 +28,12 @@ public:
     int getId();
     void setPrisonTime(int time);
     int getPrisonTime();
-    void setNrOfOwnedProperties(int nr);
+
+    void setNrOfOwnedProperties();
     int getNrOfOwnedProperties() const;
 
-    void setOwnedProperties(int *properties);
-    int *getOwnedProperties();
+    void setOwnedProperties(); // ?
+    int *getOwnedProperties(); // ?
 
     void makeMove(QLabel* label); //throw a dice
     void sellProperty(QLabel *label);

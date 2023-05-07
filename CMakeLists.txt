@@ -35,6 +35,8 @@ set(PROJECT_SOURCES
         fieldminus.h
         fieldstart.h
         fieldstart.cpp
+        singlelist.h
+        singlelist.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

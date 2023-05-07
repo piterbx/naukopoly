@@ -23,7 +23,7 @@ Game::Game()
         playersTab[i].setAccountBalance(400);
         playersTab[i].setPosition(0);
         playersTab[i].setPrisonTime(0);
-        playersTab[i].setNrOfOwnedProperties(0);
+        playersTab[i].setNrOfOwnedProperties();
     }
 
 

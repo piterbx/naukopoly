@@ -22,6 +22,7 @@ public:
     void setLabelPosition();
     void onAddDisplayProperty();
     void onRemoveDisplayProperty();
+    static bool firstClick;
 
 private slots:
     void onPushButtonThrowADiceClicked();

@@ -1,4 +1,5 @@
 #include "qlabel.h"
+#include "mainwindow.h"
 #include <iostream>
 
 

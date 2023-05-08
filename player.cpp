@@ -7,7 +7,7 @@ Player::Player()
     //setting default values for new game
     position = 0; //idx of start field
     accountBalance = 400;
-    ownedProperties.setHeadAndTailToNull();
+    ownedProperties.clear();
     prisonTime = 0;
 }
 
@@ -56,9 +56,10 @@ int Player::getPrisonTime()
     return prisonTime;
 }
 
-void Player::setNrOfOwnedProperties()
+void Player::setNrOfOwnedProperties(int n)
 {
-    nrOfOwnedProperties = ownedProperties.getSize();
+    if(n==0) ownedProperties.clear();
+    else ownedProperties.resize(n);
 }
 
 void Player::makeMove(QLabel* label)
@@ -113,10 +114,6 @@ void Player::buyProperty(QLabel *label)
             //todo table of owned properties && disabling buttons before move
 
             //ownedProperties in Game?? as static
-            listElement *el;
-            el->propertyFieldIndex = this->position;
-            el->propertyName = place.getFieldName();
-            el->boughtHouses = place.getHouses();
 
 
             str = QString::fromStdString("Gracz "+std::to_string(this->id+1)+" kupił ("+std::to_string(this->position) +") "+ place.getFieldName());
@@ -148,10 +145,10 @@ void Player::buyHouse(QLabel *label)
 
 int Player::getNrOfOwnedProperties() const
 {
-    return nrOfOwnedProperties;
+    return ownedProperties.size();
 }
 
-SingleList Player::getOwnedProperties() const
+std::vector<listElement> Player::getOwnedProperties() const
 {
     return ownedProperties;
 }

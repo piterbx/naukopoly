@@ -84,8 +84,8 @@ void MainWindow::setLabelPosition()
 
 void MainWindow::displayProperties()
 {
-    SingleList list3 = Game::getPlayersTab()[2].getOwnedProperties();
-    ui->listWidget3 = list3.display();
+    std::vector<listElement> list3 = Game::getPlayersTab()[2].getOwnedProperties();
+//    ui->listWidget3 = list3;
     //next => Game::getPlayersTab()[3].setOwnedProperties() = list3 ?????
 }
 

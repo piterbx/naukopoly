@@ -1,4 +1,3 @@
-#include "singlelist.h"
 #include "qlabel.h"
 #include <iostream>
 
@@ -6,8 +5,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-
-
+struct listElement {
+    int fieldIndex;
+    std::string propertyName; //to display on screen name; = fields[propertyFieldIndex].fieldName
+    int boughtHouses; //=fields[propertyFieldIndex].houses; to display on screen how many houses
+};
 
 class Player
 {
@@ -16,7 +18,7 @@ class Player
     double accountBalance;
     int prisonTime;
     int nrOfOwnedProperties; //length of ownedProperties
-    SingleList ownedProperties; //list! of property indexes
+    std::vector<listElement> ownedProperties; //list! of property indexes
 public:
     Player();
     ~Player();
@@ -29,11 +31,10 @@ public:
     void setPrisonTime(int time);
     int getPrisonTime();
 
-    void setNrOfOwnedProperties();
+    void setNrOfOwnedProperties(int n);
     int getNrOfOwnedProperties() const;
 
-    void setOwnedProperties(); // ?????? unused??
-    SingleList getOwnedProperties() const;
+    std::vector<listElement> getOwnedProperties() const;
 
     void makeMove(QLabel* label); //throw a dice
     void sellProperty(QLabel *label);

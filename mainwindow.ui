@@ -67,6 +67,16 @@
       <string>Pozycja:</string>
      </property>
     </widget>
+    <widget class="QListWidget" name="listWidget1">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>221</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBoxMenu">
     <property name="geometry">
@@ -241,6 +251,16 @@
       <string>Pozycja:</string>
      </property>
     </widget>
+    <widget class="QListWidget" name="listWidget4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>221</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBoxPlayer2">
     <property name="geometry">
@@ -278,6 +298,16 @@
      </property>
      <property name="text">
       <string>Pozycja:</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidget2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>221</width>
+       <height>61</height>
+      </rect>
      </property>
     </widget>
    </widget>

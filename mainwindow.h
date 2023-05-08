@@ -5,7 +5,6 @@
 #include <QMainWindow>
 
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -21,7 +20,8 @@ public:
     void setLabelCurrentPlayer();
     void setLabelAccount();
     void setLabelPosition();
-    void displayProperties();
+    void onAddDisplayProperty();
+    void onRemoveDisplayProperty();
 
 private slots:
     void onPushButtonThrowADiceClicked();

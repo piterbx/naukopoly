@@ -214,7 +214,7 @@ void Game::getButtons(Ui::MainWindow *ui)
     btn2 = ui->pushButtonBuyProperty;
     btn3 = ui->pushButtonSellProperty;
     btn4 = ui->pushButtonBuyHouse;
-    Game::updateButtons();
+//    Game::updateButtons();
 }
 
 void Game::updateButtons()
@@ -257,8 +257,9 @@ void Game::switchPlayer()
 {
     currentPlayer = (currentPlayer+1)%nrOfPlayers;
     beforeMove = true;
+    //todo improve time
 
-    updateButtons();
+//    updateButtons();
 }
 
 void Game::setBeforeMove(bool newBeforeMove)

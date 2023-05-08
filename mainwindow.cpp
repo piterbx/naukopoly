@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-
 #include "game.h"
 
 
@@ -22,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     setLabelAccount();
     setLabelCurrentPlayer();
     setLabelPosition();
-    displayProperties();
+
 }
 
 MainWindow::~MainWindow()
@@ -82,11 +81,53 @@ void MainWindow::setLabelPosition()
     }
 }
 
-void MainWindow::displayProperties()
+void MainWindow::onAddDisplayProperty()
 {
-    std::vector<listElement> list3 = Game::getPlayersTab()[2].getOwnedProperties();
-//    ui->listWidget3 = list3;
-    //next => Game::getPlayersTab()[3].setOwnedProperties() = list3 ?????
+    std::vector<listElement> tmpList = Game::getPlayersTab()[Game::getCurrentPlayer()].getOwnedProperties();
+    QString str;
+    for(listElement &el : tmpList){
+        str = QString::fromStdString(el.propertyName+" domy: "+std::to_string(el.boughtHouses)+" czynsz: "+std::to_string(el.totalValue));
+        switch(Game::getCurrentPlayer()){
+        case 0:
+            ui->listWidget1->addItem(str);
+            break;
+        case 1:
+            ui->listWidget2->addItem(str);
+            break;
+        case 2:
+            ui->listWidget3->addItem(str);
+            break;
+        case 3:
+            ui->listWidget4->addItem(str);
+            break;
+        }
+    }
+}
+
+void MainWindow::onRemoveDisplayProperty()
+{
+    for(int i=0;i<Game::getNrOfPlayers();i++){
+        std::vector<listElement> tmpList = Game::getPlayersTab()[i].getOwnedProperties();
+        QString str;
+        for(listElement &el : tmpList){
+            str = QString::fromStdString(el.propertyName+" domy: "+std::to_string(el.boughtHouses)+" czynsz: "+std::to_string(el.totalValue));
+            QListWidgetItem *tmp = new QListWidgetItem(str);
+            switch(i){
+            case 0:
+                ui->listWidget1->removeItemWidget(tmp);
+                break;
+            case 1:
+                ui->listWidget2->removeItemWidget(tmp);
+                break;
+            case 2:
+                ui->listWidget3->removeItemWidget(tmp);
+                break;
+            case 3:
+                ui->listWidget4->removeItemWidget(tmp);
+                break;
+            }
+        }
+    }
 }
 
 void MainWindow::onPushButtonThrowADiceClicked()
@@ -109,6 +150,7 @@ void MainWindow::onPushButtonSellPropertyClicked()
 
     setLabelAccount();
     setLabelPosition();
+    onRemoveDisplayProperty();
 }
 
 
@@ -120,6 +162,7 @@ void MainWindow::onPushButtonBuyPropertyClicked()
 
     setLabelAccount();
     setLabelPosition();
+    onAddDisplayProperty();
 }
 
 

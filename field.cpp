@@ -1,8 +1,14 @@
 #include "field.h"
 #include <iostream>
 
+int Field::getTotalValue() const
+{
+    return totalValue;
+}
+
 Field::Field()
 {
+    rent = 20;
     owner = -1; //bank or none
     houses = 0;
 }
@@ -30,13 +36,14 @@ void Field::setCanBePurchased(bool canBePurchased)
 void Field::setHouses(int inputHouses)
 {
     houses = inputHouses;
+    totalValue = rent * ((houses + 2) * 0.5);
 }
 
 bool Field::canIUpgradeHouses()
 {
     if(houses < 3){
-        totalValue = rent * ((houses + 2) * 0.5);
         houses++;
+        totalValue = rent * ((houses + 2) * 0.5);
         return true;
     }
     else{

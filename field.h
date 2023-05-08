@@ -29,6 +29,7 @@ public:
     bool getCanBePurchased();
     int getHouses();
     string getFieldName();
+    int getTotalValue() const;
 };
 
 #endif // FIELD_H

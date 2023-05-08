@@ -9,6 +9,7 @@ struct listElement {
     int fieldIndex;
     std::string propertyName; //to display on screen name; = fields[propertyFieldIndex].fieldName
     int boughtHouses; //=fields[propertyFieldIndex].houses; to display on screen how many houses
+    int totalValue;
 };
 
 class Player
@@ -40,6 +41,8 @@ public:
     void sellProperty(QLabel *label);
     void buyProperty(QLabel *label);
     void buyHouse(QLabel *label);
+
+    static bool findElement(listElement tmp);
 };
 
 #endif // PLAYER_H

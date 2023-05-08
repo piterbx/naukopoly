@@ -1,5 +1,5 @@
 
-#include "listoneway.h"
+#include "singlelist.h"
 
 SingleList::SingleList()
 {
@@ -19,14 +19,10 @@ SingleList::~SingleList()
     }
 }
 
-void SingleList::setHead(listElement *el)
+void SingleList::setHeadAndTailToNull()
 {
-    head = el;
-}
-
-void SingleList::setTail(listElement *el)
-{
-    tail = el;
+    head = nullptr;
+    tail = nullptr;
 }
 
 int SingleList::getSize()

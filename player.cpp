@@ -7,15 +7,13 @@ Player::Player()
     //setting default values for new game
     position = 0; //idx of start field
     accountBalance = 400;
-    nrOfOwnedProperties = 0;
-    ownedProperties->setHead(nullptr);
-    ownedProperties->setTail(nullptr);
+    ownedProperties.setHeadAndTailToNull();
     prisonTime = 0;
 }
 
 Player::~Player()
 {
-    delete [] ownedProperties;
+
 }
 
 void Player::setPosition(int poz)
@@ -60,7 +58,7 @@ int Player::getPrisonTime()
 
 void Player::setNrOfOwnedProperties()
 {
-    nrOfOwnedProperties = ownedProperties->getSize();
+    nrOfOwnedProperties = ownedProperties.getSize();
 }
 
 void Player::makeMove(QLabel* label)

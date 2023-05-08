@@ -21,8 +21,7 @@ public:
     SingleList();
     ~SingleList();
 
-    void setHead(listElement *el);
-    void setTail(listElement *el);
+    void setHeadAndTailToNull();
 
     int getSize();
     //adding element

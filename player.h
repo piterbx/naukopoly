@@ -1,4 +1,4 @@
-#include "listoneway.h"
+#include "singlelist.h"
 #include "qlabel.h"
 #include <iostream>
 
@@ -16,7 +16,7 @@ class Player
     double accountBalance;
     int prisonTime;
     int nrOfOwnedProperties; //length of ownedProperties
-    SingleList *ownedProperties; //list! of property indexes
+    SingleList ownedProperties; //list! of property indexes
 public:
     Player();
     ~Player();

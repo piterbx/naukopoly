@@ -21,6 +21,7 @@ public:
     void setLabelCurrentPlayer();
     void setLabelAccount();
     void setLabelPosition();
+    void displayProperties();
 
 private slots:
     void onPushButtonThrowADiceClicked();

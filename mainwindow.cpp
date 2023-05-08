@@ -18,9 +18,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     g.getButtons(ui);
 
+
     setLabelAccount();
     setLabelCurrentPlayer();
     setLabelPosition();
+    displayProperties();
 }
 
 MainWindow::~MainWindow()
@@ -39,7 +41,7 @@ void MainWindow::setLabelAccount()
     Player &tmp = Game::getPlayersTab()[Game::currentPlayer];
     QString str;
     for(int i=0;i<Game::getNrOfPlayers();i++){
-        str = QString::fromStdString("Stan konta: "+std::to_string(Game::getPlayersTab()[i].getAccountBalance()));
+        str = QString::fromStdString("Stan konta: "+std::to_string((int)Game::getPlayersTab()[i].getAccountBalance()));
         switch(i){
         case 0:
             ui->labelAccount1->setText(str);
@@ -78,6 +80,13 @@ void MainWindow::setLabelPosition()
             break;
         }
     }
+}
+
+void MainWindow::displayProperties()
+{
+    SingleList list3 = Game::getPlayersTab()[2].getOwnedProperties();
+    ui->listWidget3 = list3.display();
+    //next => Game::getPlayersTab()[3].setOwnedProperties() = list3 ?????
 }
 
 void MainWindow::onPushButtonThrowADiceClicked()

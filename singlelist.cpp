@@ -109,3 +109,22 @@ listElement *SingleList::findElement(int value)
     return tmp;
 
 }
+
+QListWidget *SingleList::display()
+{
+    QListWidget *tmpList = new QListWidget();
+    QString str;
+    listElement *tmp;
+
+    if(!head) return tmpList;//empty list
+    else {
+        tmp = head;
+        while(tmp){
+            str = QString::fromStdString(std::to_string(tmp->propertyFieldIndex)+" "+tmp->propertyName+" domy: "+std::to_string(tmp->boughtHouses));
+            QListWidgetItem *el = new QListWidgetItem(str);
+            tmpList->addItem(el);
+            delete el;
+        }
+    }
+    return tmpList;
+}

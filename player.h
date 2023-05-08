@@ -32,8 +32,8 @@ public:
     void setNrOfOwnedProperties();
     int getNrOfOwnedProperties() const;
 
-    void setOwnedProperties(); // ?
-    int *getOwnedProperties(); // ?
+    void setOwnedProperties(); // ?????? unused??
+    SingleList getOwnedProperties() const;
 
     void makeMove(QLabel* label); //throw a dice
     void sellProperty(QLabel *label);

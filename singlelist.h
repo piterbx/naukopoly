@@ -2,6 +2,7 @@
 #ifndef LISTONEWAY_H
 #define LISTONEWAY_H
 
+#include "qlistwidget.h"
 #include <string>
 
 struct listElement {
@@ -31,9 +32,9 @@ public:
     listElement *popHead();
     listElement *pushTail();
     listElement *erase(listElement *el);
-    //display all elements todo
     //custom function -> find specific element and return this listElement
     listElement *findElement(int value);
+    QListWidget *display();
 };
 
 #endif // LISTONEWAY_H

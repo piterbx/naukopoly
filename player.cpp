@@ -111,6 +111,14 @@ void Player::buyProperty(QLabel *label)
         if(this->accountBalance>=place.getPropertyPrice()){
             place.setOwner(this->id);
             //todo table of owned properties && disabling buttons before move
+
+            //ownedProperties in Game?? as static
+            listElement *el;
+            el->propertyFieldIndex = this->position;
+            el->propertyName = place.getFieldName();
+            el->boughtHouses = place.getHouses();
+
+
             str = QString::fromStdString("Gracz "+std::to_string(this->id+1)+" kupił ("+std::to_string(this->position) +") "+ place.getFieldName());
             this->accountBalance -= place.getPropertyPrice();
         } else {
@@ -141,4 +149,9 @@ void Player::buyHouse(QLabel *label)
 int Player::getNrOfOwnedProperties() const
 {
     return nrOfOwnedProperties;
+}
+
+SingleList Player::getOwnedProperties() const
+{
+    return ownedProperties;
 }

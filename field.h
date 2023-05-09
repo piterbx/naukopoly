@@ -11,6 +11,7 @@ private:
         bool canBePurchased;
         int rent;
         int houses; // are we doing hotels?
+        int housePrice;
         int totalValue; // price of house +
         // tax = 0.1 * totalValue
 public:
@@ -21,6 +22,7 @@ public:
     void setOwner(int owner);
     void setCanBePurchased(bool canBePurchased);
     void setHouses(int inputHouses);
+    void setHousePrice(int housePrice);
     bool canIUpgradeHouses();
     // get values
     // getname? index?
@@ -30,6 +32,7 @@ public:
     int getHouses();
     string getFieldName();
     int getTotalValue() const;
+    int getHousePrice();
 };
 
 #endif // FIELD_H

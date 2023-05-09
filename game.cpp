@@ -258,7 +258,6 @@ void Game::switchPlayer()
     //??? sleep(300)
     currentPlayer = (currentPlayer+1)%nrOfPlayers;
     beforeMove = true;
-    MainWindow::firstClick = true;
     //todo improve time
 
 //    updateButtons();

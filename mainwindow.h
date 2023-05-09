@@ -20,9 +20,7 @@ public:
     void setLabelCurrentPlayer();
     void setLabelAccount();
     void setLabelPosition();
-    void onAddDisplayProperty();
-    void onRemoveDisplayProperty();
-    static bool firstClick;
+    void updateDisplayPropertyList();
 
 private slots:
     void onPushButtonThrowADiceClicked();

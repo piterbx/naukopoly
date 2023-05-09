@@ -6,11 +6,18 @@ int Field::getTotalValue() const
     return totalValue;
 }
 
+int Field::getHousePrice()
+{
+    return housePrice;
+}
+
 Field::Field()
 {
     rent = 20;
     owner = -1; //bank or none
     houses = 0;
+    housePrice = 10;
+    totalValue = rent;
 }
 
 void Field::setFieldName(string inputName)
@@ -37,6 +44,11 @@ void Field::setHouses(int inputHouses)
 {
     houses = inputHouses;
     totalValue = rent * ((houses + 2) * 0.5);
+}
+
+void Field::setHousePrice(int housePrice)
+{
+    this->housePrice = housePrice;
 }
 
 bool Field::canIUpgradeHouses()

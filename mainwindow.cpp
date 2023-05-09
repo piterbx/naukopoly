@@ -2,8 +2,6 @@
 #include "./ui_mainwindow.h"
 #include "game.h"
 
-bool MainWindow::firstClick = true;
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -82,65 +80,44 @@ void MainWindow::setLabelPosition()
     }
 }
 
-void MainWindow::onAddDisplayProperty()
+void MainWindow::updateDisplayPropertyList()
 {
+    switch(Game::getCurrentPlayer()){
+    case 0:
+        ui->listWidget1->clear();
+        break;
+    case 1:
+        ui->listWidget2->clear();
+        break;
+    case 2:
+        ui->listWidget3->clear();
+        break;
+    case 3:
+        ui->listWidget4->clear();
+        break;
+    }
+
     std::vector<listElement> tmpList = Game::getPlayersTab()[Game::getCurrentPlayer()].getOwnedProperties();
     QString str;
     for(listElement &el : tmpList){
         str = QString::fromStdString(el.propertyName+" domy: "+std::to_string(el.boughtHouses)+" czynsz: "+std::to_string(el.totalValue));
         switch(Game::getCurrentPlayer()){
         case 0:
-            if(firstClick) ui->listWidget1->addItem(str);
+            ui->listWidget1->addItem(str);
             break;
         case 1:
-            if(firstClick) ui->listWidget2->addItem(str);
+            ui->listWidget2->addItem(str);
             break;
         case 2:
-            if(firstClick) ui->listWidget3->addItem(str);
+            ui->listWidget3->addItem(str);
             break;
         case 3:
-            if(firstClick) ui->listWidget4->addItem(str);
+            ui->listWidget4->addItem(str);
             break;
         }
     }
 }
 
-void MainWindow::onRemoveDisplayProperty()
-{
-    std::vector<listElement> tmpList = Game::getPlayersTab()[Game::getCurrentPlayer()].getOwnedProperties();
-    int idx = Game::getPlayersTab()[Game::getCurrentPlayer()].getPosition();
-    QString str = QString::fromStdString(tmpList[idx].propertyName);
-//    QList<QListWidgetItem *> items;
-
-
-//    switch(Game::getCurrentPlayer()){
-//    case 0:
-//        items = ui->listWidget1->findItems(str, Qt::MatchContains);
-//        for (QListWidgetItem *item : items)
-//            delete ui->listWidget1->takeItem(ui->listWidget1->row(item));
-//        //        ui->listWidget1->removeItemWidget(item);
-//        break;
-//    case 1:
-//        items = ui->listWidget2->findItems(str, Qt::MatchContains);
-//        for (QListWidgetItem *item : items)
-//        ui->listWidget2->takeItem(ui->listWidget2->row(item));
-//        //ui->listWidget2->removeItemWidget(item);
-//        break;
-//    case 2:
-//        items = ui->listWidget3->findItems(str, Qt::MatchContains);
-//        for (QListWidgetItem *item : items)
-//        ui->listWidget3->takeItem(ui->listWidget3->row(item));
-//        //ui->listWidget3->removeItemWidget(item);
-//        break;
-//    case 3:
-//        items = ui->listWidget4->findItems(str, Qt::MatchContains);
-//        for (QListWidgetItem *item : items)
-//        ui->listWidget4->takeItem(ui->listWidget4->row(item));
-//        //ui->listWidget4->removeItemWidget(item);
-//        break;
-//    }
-
-}
 
 void MainWindow::onPushButtonThrowADiceClicked()
 {
@@ -162,7 +139,7 @@ void MainWindow::onPushButtonSellPropertyClicked()
 
     setLabelAccount();
     setLabelPosition();
-    onRemoveDisplayProperty();
+    updateDisplayPropertyList();
 }
 
 
@@ -173,9 +150,7 @@ void MainWindow::onPushButtonBuyPropertyClicked()
 
     setLabelAccount();
     setLabelPosition();
-    onAddDisplayProperty();
-
-    firstClick=false;
+    updateDisplayPropertyList();
 }
 
 
@@ -187,5 +162,6 @@ void MainWindow::onPushButtonBuyHouseClicked()
 
     setLabelAccount();
     setLabelPosition();
+    updateDisplayPropertyList();
 }
 

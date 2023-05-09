@@ -88,7 +88,9 @@ void Player::sellProperty(QLabel* label)
     if(this->id==place.getOwner()){
 
         //erase element from vector tables
-        remove_if(this->ownedProperties.begin(), this->ownedProperties.end(), findElement);
+        for(auto i=this->ownedProperties.begin();i<this->ownedProperties.end();i++){
+            if(i->fieldIndex==this->position) this->ownedProperties.erase(i);
+        }
 
         place.setOwner(-1);
         place.setHouses(0);
@@ -136,14 +138,16 @@ void Player::buyHouse(QLabel *label)
     Field &place = Game::getFields()[this->position];
     QString str;
     if(place.getOwner()==this->getId()){
-        if(this->accountBalance>=20){
+        if(this->accountBalance>=place.getHousePrice()){
             if(place.canIUpgradeHouses()){
                 str = QString::fromStdString("Gracz "+std::to_string(this->id+1)+" kupił dom w "+place.getFieldName());
+                this->accountBalance -= place.getHousePrice();
 
                 //adding info (updating) to vector array
                 for(listElement &el : ownedProperties){
                     if(el.fieldIndex==this->position) {
                         el.boughtHouses++;
+                        el.totalValue = place.getTotalValue();
                         break;
                     }
                 }
@@ -154,13 +158,6 @@ void Player::buyHouse(QLabel *label)
     }
     label->setText(str);
 }
-
-bool Player::findElement(listElement tmp)
-{
-    if(tmp.fieldIndex==Game::getPlayersTab()[Game::currentPlayer].getPosition()) return true;
-    return false;
-}
-
 
 int Player::getNrOfOwnedProperties() const
 {

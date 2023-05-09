@@ -42,8 +42,6 @@ public:
     void sellProperty(QLabel *label);
     void buyProperty(QLabel *label);
     void buyHouse(QLabel *label);
-
-    static bool findElement(listElement tmp);
 };
 
 #endif // PLAYER_H

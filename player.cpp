@@ -76,14 +76,14 @@ void Player::makeMove(QLabel* label)
     } else {
         label->setText("Gracz jest w wiezieniu");
     }
-    Game::setBeforeMove(false);
+    Game::getInstance()->setBeforeMove(false);
 //    Game::updateButtons();
-    Game::switchPlayer();
+    Game::getInstance()->switchPlayer();
 }
 
 void Player::sellProperty(QLabel* label)
 {
-    Field &place = Game::getFields()[this->position]; //we want to work on original not on copy
+    Field &place = Game::getInstance()->getFields()[this->position]; //we want to work on original not on copy
     QString str;
     if(this->id==place.getOwner()){
 
@@ -107,7 +107,7 @@ void Player::sellProperty(QLabel* label)
 
 void Player::buyProperty(QLabel *label)
 {
-    Field &place = Game::getFields()[this->position];
+    Field &place = Game::getInstance()->getFields()[this->position];
     QString str;
     if(place.getOwner()==-1 && place.getCanBePurchased()){
         if(this->accountBalance>=place.getPropertyPrice()){
@@ -135,7 +135,7 @@ void Player::buyProperty(QLabel *label)
 
 void Player::buyHouse(QLabel *label)
 {
-    Field &place = Game::getFields()[this->position];
+    Field &place = Game::getInstance()->getFields()[this->position];
     QString str;
     if(place.getOwner()==this->getId()){
         if(this->accountBalance>=place.getHousePrice()){

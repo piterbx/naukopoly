@@ -11,38 +11,47 @@ class Game
 {
     int time; //in seconds
     int timeLeft;
-    static bool beforeMove;
-    static const int nrOfPlayers;
-    static Player playersTab[4];
-    static Field fields[40];
+    bool beforeMove;
+    int nrOfPlayers;
+    Player playersTab[4];
+    Field fields[40];
 
-    static QPushButton *btn1;
-    static QPushButton *btn2;
-    static QPushButton *btn3;
-    static QPushButton *btn4;
+    QPushButton *btn1;
+    QPushButton *btn2;
+    QPushButton *btn3;
+    QPushButton *btn4;
 
-public:
+    //---- implementing singleton
+    static Game *ginstance;
+protected:
     Game();
-    ~Game();
-    static Player* getPlayersTab();
-    static int getNrOfPlayers();
-    static Field* getFields();
+    ~Game() {}
+public:
+    //should have 1 instance (not many clones)
+    Game(Game &other) = delete;
+    void operator=(const Game &) = delete;
+
+    static Game *getInstance();
+
+    Player* getPlayersTab();
+    int getNrOfPlayers();
+    Field* getFields();
 
     void checkForWin(); //todo it will be executed after single move
     void countTime(); //this function updates timeLeft of the game
     void getButtons(Ui::MainWindow *ui);
-    static void updateButtons();
+    void updateButtons();
 
-    static int currentPlayer; // is an index of player in playersTab
-    static void setCurrentPlayer(int newCurrentPlayer);
-    static int getCurrentPlayer();
+    int currentPlayer; // is an index of player in playersTab
+    void setCurrentPlayer(int newCurrentPlayer);
+    int getCurrentPlayer();
 
-    static void switchPlayer();
+    void switchPlayer();
 
 
-    static bool getBeforeMove();
-    static void setBeforeMove(bool newBeforeMove);
-    static QPushButton *getBtn1();
+    bool getBeforeMove();
+    void setBeforeMove(bool newBeforeMove);
+    QPushButton *getBtn1();
 };
 
 #endif // GAME_H

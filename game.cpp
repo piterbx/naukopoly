@@ -1,19 +1,14 @@
 
 #include "game.h"
 
-int Game::currentPlayer = 0; // 0 is an index of player 1
-const int Game::nrOfPlayers = 4;
-Player Game::playersTab[nrOfPlayers];
-Field Game::fields[40];
-
-bool Game::beforeMove = true;
-QPushButton* Game::btn1 = nullptr;
-QPushButton* Game::btn2 = nullptr;
-QPushButton* Game::btn3 = nullptr;
-QPushButton* Game::btn4 = nullptr;
+Game * Game::ginstance = nullptr;
 
 Game::Game()
 {
+    currentPlayer = 0; // 0 is an index of player 1
+    nrOfPlayers = 4;
+
+    beforeMove = true;
     currentPlayer = 0; // set to player 1
     time = 900; //15min = 900s
     timeLeft = time;
@@ -189,8 +184,12 @@ Game::Game()
 
 }
 
-Game::~Game()
+Game *Game::getInstance()
 {
+    if(ginstance == nullptr){
+        ginstance = new Game();
+    }
+    return ginstance;
 }
 
 Player *Game::getPlayersTab()
@@ -219,7 +218,7 @@ void Game::getButtons(Ui::MainWindow *ui)
 
 void Game::updateButtons()
 {
-    Field &place = Game::getFields()[Game::getPlayersTab()[Game::currentPlayer].getPosition()];
+    Field &place = getFields()[getPlayersTab()[currentPlayer].getPosition()];
     if(beforeMove){
         btn1->setDisabled(false);
         btn2->setDisabled(true);

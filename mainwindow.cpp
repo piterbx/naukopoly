@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    Game g; //musthave !!!
+    Game::getInstance();
     ui->setupUi(this);
 
     QObject::connect(ui->pushButtonThrowADice, &QPushButton::clicked, this, &MainWindow::onPushButtonThrowADiceClicked);
@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(ui->pushButtonBuyProperty, &QPushButton::clicked, this, &MainWindow::onPushButtonBuyPropertyClicked);
     QObject::connect(ui->pushButtonBuyHouse, &QPushButton::clicked, this, &MainWindow::onPushButtonBuyHouseClicked);
 
-    g.getButtons(ui);
+    Game::getInstance()->getButtons(ui);
 
 
     setLabelAccount();
@@ -30,16 +30,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::setLabelCurrentPlayer()
 {
-    QString tmp = QString::fromStdString("Rzuca gracz "+std::to_string(Game::currentPlayer+1));
+    QString tmp = QString::fromStdString("Rzuca gracz "+std::to_string(Game::getInstance()->currentPlayer+1));
     ui->labelCurrentPlayerMoveInfo->setText(tmp);
 }
 
 void MainWindow::setLabelAccount()
 {
-    Player &tmp = Game::getPlayersTab()[Game::currentPlayer];
+    Player &tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->currentPlayer];
     QString str;
-    for(int i=0;i<Game::getNrOfPlayers();i++){
-        str = QString::fromStdString("Stan konta: "+std::to_string((int)Game::getPlayersTab()[i].getAccountBalance()));
+    for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++){
+        str = QString::fromStdString("Stan konta: "+std::to_string((int)Game::getInstance()->getPlayersTab()[i].getAccountBalance()));
         switch(i){
         case 0:
             ui->labelAccount1->setText(str);
@@ -59,10 +59,10 @@ void MainWindow::setLabelAccount()
 
 void MainWindow::setLabelPosition()
 {
-    Player &tmp = Game::getPlayersTab()[Game::currentPlayer];
+    Player &tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->currentPlayer];
     QString str;
-    for(int i=0;i<Game::getNrOfPlayers();i++){
-        str = QString::fromStdString("Pozycja: "+std::to_string(Game::getPlayersTab()[i].getPosition()));
+    for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++){
+        str = QString::fromStdString("Pozycja: "+std::to_string(Game::getInstance()->getPlayersTab()[i].getPosition()));
         switch(i){
         case 0:
             ui->labelPos1->setText(str);
@@ -82,7 +82,7 @@ void MainWindow::setLabelPosition()
 
 void MainWindow::updateDisplayPropertyList()
 {
-    switch(Game::getCurrentPlayer()){
+    switch(Game::getInstance()->getCurrentPlayer()){
     case 0:
         ui->listWidget1->clear();
         break;
@@ -97,11 +97,11 @@ void MainWindow::updateDisplayPropertyList()
         break;
     }
 
-    std::vector<listElement> tmpList = Game::getPlayersTab()[Game::getCurrentPlayer()].getOwnedProperties();
+    std::vector<listElement> tmpList = Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].getOwnedProperties();
     QString str;
     for(listElement &el : tmpList){
         str = QString::fromStdString(el.propertyName+" domy: "+std::to_string(el.boughtHouses)+" czynsz: "+std::to_string(el.totalValue));
-        switch(Game::getCurrentPlayer()){
+        switch(Game::getInstance()->getCurrentPlayer()){
         case 0:
             ui->listWidget1->addItem(str);
             break;
@@ -122,7 +122,7 @@ void MainWindow::updateDisplayPropertyList()
 void MainWindow::onPushButtonThrowADiceClicked()
 {
     //making a move on a current player
-    Game::getPlayersTab()[Game::getCurrentPlayer()].makeMove(ui->labelNotification);
+    Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].makeMove(ui->labelNotification);
     //ui->labelNotification->setText("Clicked");
 
     setLabelAccount();
@@ -134,7 +134,7 @@ void MainWindow::onPushButtonThrowADiceClicked()
 void MainWindow::onPushButtonSellPropertyClicked()
 {
     //sell property
-    Game::getPlayersTab()[Game::getCurrentPlayer()].sellProperty(ui->labelNotification);
+    Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].sellProperty(ui->labelNotification);
 
 
     setLabelAccount();
@@ -146,7 +146,7 @@ void MainWindow::onPushButtonSellPropertyClicked()
 void MainWindow::onPushButtonBuyPropertyClicked()
 {
     //buy property
-    Game::getPlayersTab()[Game::getCurrentPlayer()].buyProperty(ui->labelNotification);
+    Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].buyProperty(ui->labelNotification);
 
     setLabelAccount();
     setLabelPosition();
@@ -157,7 +157,7 @@ void MainWindow::onPushButtonBuyPropertyClicked()
 void MainWindow::onPushButtonBuyHouseClicked()
 {
     //buy a house
-    Game::getPlayersTab()[Game::getCurrentPlayer()].buyHouse(ui->labelNotification);
+    Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].buyHouse(ui->labelNotification);
 
 
     setLabelAccount();

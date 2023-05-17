@@ -14,11 +14,13 @@ Game::Game()
     timeLeft = time;
 
     for(int i=0;i<nrOfPlayers;i++){
-        playersTab[i].setId(i);
-        playersTab[i].setAccountBalance(400);
-        playersTab[i].setPosition(0);
-        playersTab[i].setPrisonTime(0);
-        playersTab[i].setNrOfOwnedProperties(0);
+        Player tmp;
+        tmp.setId(i);
+        tmp.setAccountBalance(400);
+        tmp.setPosition(0);
+        tmp.setPrisonTime(0);
+        tmp.setNrOfOwnedProperties(0);
+        playersTab.push_back(tmp);
     }
 
 
@@ -192,7 +194,7 @@ Game *Game::getInstance()
     return ginstance;
 }
 
-Player *Game::getPlayersTab()
+vector<Player> Game::getPlayersTab() const
 {
     return playersTab;
 }

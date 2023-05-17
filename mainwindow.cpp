@@ -36,7 +36,7 @@ void MainWindow::setLabelCurrentPlayer()
 
 void MainWindow::setLabelAccount()
 {
-    Player &tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->currentPlayer];
+    Player tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->currentPlayer];
     QString str;
     for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++){
         str = QString::fromStdString("Stan konta: "+std::to_string((int)Game::getInstance()->getPlayersTab()[i].getAccountBalance()));
@@ -59,7 +59,7 @@ void MainWindow::setLabelAccount()
 
 void MainWindow::setLabelPosition()
 {
-    Player &tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->currentPlayer];
+    Player tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->currentPlayer];
     QString str;
     for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++){
         str = QString::fromStdString("Pozycja: "+std::to_string(Game::getInstance()->getPlayersTab()[i].getPosition()));

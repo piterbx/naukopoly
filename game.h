@@ -13,7 +13,7 @@ class Game
     int timeLeft;
     bool beforeMove;
     int nrOfPlayers;
-    Player playersTab[4];
+    vector<Player> playersTab; // tab of references (normal & reference does not work because it not equal value)
     Field fields[40];
 
     QPushButton *btn1;
@@ -33,7 +33,7 @@ public:
 
     static Game *getInstance();
 
-    Player* getPlayersTab();
+    vector<Player> getPlayersTab() const;
     int getNrOfPlayers();
     Field* getFields();
 

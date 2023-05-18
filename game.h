@@ -6,6 +6,7 @@
 #include "field.h"
 #include "qpushbutton.h"
 #include "ui_mainwindow.h"
+#include <vector>
 
 class Game
 {
@@ -13,8 +14,8 @@ class Game
     int timeLeft;
     bool beforeMove;
     int nrOfPlayers;
-    vector<Player> playersTab; // tab of references (normal & reference does not work because it not equal value)
-    Field fields[40];
+    std::vector<Player> playersTab; // tab of players
+    std::vector<Field> fields;
 
     QPushButton *btn1;
     QPushButton *btn2;
@@ -33,9 +34,9 @@ public:
 
     static Game *getInstance();
 
-    vector<Player> getPlayersTab() const;
+    std::vector<Player> & getPlayersTab();
     int getNrOfPlayers();
-    Field* getFields();
+    std::vector<Field> & getFields();
 
     void checkForWin(); //todo it will be executed after single move
     void countTime(); //this function updates timeLeft of the game

@@ -23,6 +23,7 @@ Game::Game()
         playersTab.push_back(tmp);
     }
 
+    fields.resize(40);
 
     fields[0].setFieldName("Start");
     fields[0].setPropertyPrice(0);
@@ -194,7 +195,7 @@ Game *Game::getInstance()
     return ginstance;
 }
 
-vector<Player> Game::getPlayersTab() const
+std::vector<Player> &Game::getPlayersTab()
 {
     return playersTab;
 }
@@ -204,7 +205,7 @@ int Game::getNrOfPlayers()
     return nrOfPlayers;
 }
 
-Field *Game::getFields()
+std::vector<Field> &Game::getFields()
 {
     return fields;
 }

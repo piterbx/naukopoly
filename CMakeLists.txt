@@ -35,6 +35,7 @@ set(PROJECT_SOURCES
         fieldminus.h
         fieldstart.h
         fieldstart.cpp
+        resources.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

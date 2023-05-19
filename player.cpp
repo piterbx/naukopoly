@@ -1,4 +1,8 @@
-#include <random>
+#include <unistd.h>
+#include <iostream>
+
+#include <QPropertyAnimation>
+
 #include "player.h"
 #include "game.h"
 
@@ -62,10 +66,11 @@ void Player::setNrOfOwnedProperties(int n)
     else ownedProperties.resize(n);
 }
 
-void Player::makeMove(QLabel* label)
+void Player::makeMove(QLabel* label, QLabel *pawn)
 {
     //this = current player
     QString info;
+
     if(this->prisonTime==0){
 
         srand(time(NULL));
@@ -73,6 +78,8 @@ void Player::makeMove(QLabel* label)
         this->setPosition(this->getPosition()+move); // from 1 to 6
         info = QString::fromStdString("Gracz "+std::to_string(this->id+1)+" rusza się o "+std::to_string(move)+" na pole "+std::to_string(this->getPosition()));
         label->setText(info);
+
+        updatePawnPosition(pawn, move);
     } else {
         label->setText("Gracz jest w wiezieniu");
     }
@@ -157,6 +164,68 @@ void Player::buyHouse(QLabel *label)
         str = "Nie jesteś właścicielem tej działki";
     }
     label->setText(str);
+}
+
+void Player::updatePawnPosition(QLabel *pawn, int move)
+{
+    QRect geomet = pawn->geometry();
+    QPropertyAnimation *anim = new QPropertyAnimation(pawn, "geometry");
+
+    int xx, yy;
+    anim->setDuration(200*move);
+    anim->setStartValue(geomet); // before visual move
+    switch(this->position){
+    case 0: xx=890; yy=600; break;
+    case 1: xx=850; yy=600; break;
+    case 2: xx=790; yy=600; break;
+    case 3: xx=730; yy=600; break;
+    case 4: xx=680; yy=600; break;
+    case 5: xx=620; yy=600; break;
+    case 6: xx=560; yy=600; break;
+    case 7: xx=510; yy=600; break;
+    case 8: xx=450; yy=600; break;
+    case 9: xx=390; yy=600; break;
+    case 10: xx=300; yy=600; break;
+    case 11: xx=300; yy=510; break;
+    case 12: xx=300; yy=460; break;
+    case 13: xx=300; yy=410; break;
+    case 14: xx=300; yy=360; break;
+    case 15: xx=300; yy=310; break;
+    case 16: xx=300; yy=250; break;
+    case 17: xx=300; yy=200; break;
+    case 18: xx=300; yy=150; break;
+    case 19: xx=300; yy=100; break;
+    case 20: xx=300; yy=30; break;
+    case 21: xx=390; yy=20; break;
+    case 22: xx=450; yy=20; break;
+    case 23: xx=510; yy=20; break;
+    case 24: xx=570; yy=20; break;
+    case 25: xx=620; yy=20; break;
+    case 26: xx=680; yy=20; break;
+    case 27: xx=730; yy=20; break;
+    case 28: xx=790; yy=20; break;
+    case 29: xx=850; yy=20; break;
+    case 30: xx=920; yy=20; break;
+    case 31: xx=940; yy=90; break;
+    case 32: xx=940; yy=140; break;
+    case 33: xx=940; yy=200; break;
+    case 34: xx=940; yy=250; break;
+    case 35: xx=940; yy=300; break;
+    case 36: xx=940; yy=350; break;
+    case 37: xx=940; yy=400; break;
+    case 38: xx=940; yy=460; break;
+    case 39: xx=940; yy=510; break;
+    }
+    switch(Game::getInstance()->currentPlayer){
+        // dla 0 normalne
+    case 1: xx+=2; break;
+    case 2: yy-=2; break;
+    case 3: xx-=2; break;
+    }
+    anim->setEndValue(QRect(xx, yy, geomet.width(), geomet.height()));
+    anim->start();
+
+    pawn->setGeometry(xx, yy, geomet.width(), geomet.height());
 }
 
 int Player::getNrOfOwnedProperties() const

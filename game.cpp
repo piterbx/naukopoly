@@ -1,3 +1,8 @@
+#include <future>
+#include <chrono>
+#include <thread>
+#include <unistd.h>
+#include <iostream>
 
 #include "game.h"
 
@@ -257,8 +262,8 @@ int Game::getCurrentPlayer()
 
 void Game::switchPlayer()
 {
-    //??? sleep(300)
     currentPlayer = (currentPlayer+1)%nrOfPlayers;
+    cout << currentPlayer +1<< endl;
     beforeMove = true;
     //todo improve time
 

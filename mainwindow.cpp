@@ -16,7 +16,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     Game::getInstance()->getButtons(ui);
 
-
+    ui->labelP1Img->setGeometry(890, 600, 16, 16);
+    ui->labelP2Img->setGeometry(910, 600, 16, 16);
+    ui->labelP3Img->setGeometry(890, 580, 16, 16);
+    ui->labelP4Img->setGeometry(910, 580, 16, 16);
     setLabelAccount();
     setLabelCurrentPlayer();
     setLabelPosition();
@@ -122,7 +125,23 @@ void MainWindow::updateDisplayPropertyList()
 void MainWindow::onPushButtonThrowADiceClicked()
 {
     //making a move on a current player
-    Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].makeMove(ui->labelNotification);
+    QLabel *tmp;
+    switch(Game::getInstance()->getCurrentPlayer()){
+    case 0:
+        tmp = ui->labelP1Img;
+        break;
+    case 1:
+        tmp = ui->labelP2Img;
+        break;
+    case 2:
+        tmp = ui->labelP3Img;
+        break;
+    case 3:
+        tmp = ui->labelP4Img;
+        break;
+    }
+
+    Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].makeMove(ui->labelNotification, tmp);
     //ui->labelNotification->setText("Clicked");
 
     setLabelAccount();

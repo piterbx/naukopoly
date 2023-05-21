@@ -29,10 +29,6 @@ set(PROJECT_SOURCES
         fieldprison.h
         fieldcard.h
         fieldcard.cpp
-        fieldplus.cpp
-        fieldplus.h
-        fieldminus.cpp
-        fieldminus.h
         fieldstart.h
         fieldstart.cpp
 )

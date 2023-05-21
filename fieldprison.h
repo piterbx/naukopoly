@@ -8,6 +8,7 @@ private:
 public:
     FieldPrison();
     void isPlayerPrisoner(); // for display todo
+    void setPrison();
     // setPrisonTime(use different name) for current player
 };
 

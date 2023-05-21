@@ -2,5 +2,5 @@
 
 FieldCard::FieldCard()
 {
-
+    cardName ="Karta Specjalna";
 }

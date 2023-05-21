@@ -1,6 +1,7 @@
 #ifndef FIELD_H
 #define FIELD_H
 #include <string>
+#include "game.h"
 using namespace std;
 
 class Field{
@@ -33,6 +34,7 @@ public:
     string getFieldName();
     int getTotalValue() const;
     int getHousePrice();
+    void makeAction();
 };
 
 #endif // FIELD_H

@@ -83,9 +83,6 @@ void Player::makeMove(QLabel* label, QLabel *pawn)
     } else {
         label->setText("Gracz jest w wiezieniu");
     }
-    Game::getInstance()->setBeforeMove(false);
-//    Game::updateButtons();
-    Game::getInstance()->switchPlayer();
 }
 
 void Player::sellProperty(QLabel* label)
@@ -105,7 +102,6 @@ void Player::sellProperty(QLabel* label)
 
         str = QString::fromStdString("Sprzedano posesje. Dodano "+std::to_string(place.getPropertyPrice())+" do konta gracza "+std::to_string(this->id+1));
         label->setText(str);
-//        Game::getBtn1()->setDisabled(true); ???????
     } else {
         str = QString::fromStdString("Nie można sprzedać");
         label->setText(str);

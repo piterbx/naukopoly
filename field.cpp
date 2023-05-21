@@ -14,7 +14,7 @@ int Field::getHousePrice()
 Field::Field()
 {
     rent = 20;
-    owner = -1; //bank or none
+    owner = -1; //bank
     houses = 0;
     housePrice = 10;
     totalValue = rent;

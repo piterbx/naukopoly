@@ -93,9 +93,9 @@
    <widget class="QGroupBox" name="groupBoxMenu">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>400</x>
       <y>440</y>
-      <width>371</width>
+      <width>461</width>
       <height>61</height>
      </rect>
     </property>
@@ -152,6 +152,19 @@
      </property>
      <property name="text">
       <string>Kup domek</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonEndMove">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>30</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Zakończ ruch</string>
      </property>
     </widget>
    </widget>
@@ -328,7 +341,7 @@
      <rect>
       <x>530</x>
       <y>300</y>
-      <width>251</width>
+      <width>341</width>
       <height>81</height>
      </rect>
     </property>
@@ -443,14 +456,16 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuUstawienia">
+   <widget class="QMenu" name="menuSettings">
     <property name="title">
-     <string>Ustawienia</string>
+     <string>Gra</string>
     </property>
     <addaction name="actionReset"/>
+    <addaction name="actionEndGame"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
-   <widget class="QMenu" name="menuInformacje">
+   <widget class="QMenu" name="menuInfo">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -463,24 +478,16 @@
     <addaction name="actionRules"/>
     <addaction name="actionAboutAuthors"/>
    </widget>
-   <addaction name="menuUstawienia"/>
-   <addaction name="menuInformacje"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuInfo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionReset">
    <property name="text">
-    <string>Od nowa</string>
+    <string>Nowa gra</string>
    </property>
    <property name="toolTip">
     <string>Rozpocznij rozgrywkę od nowa</string>
-   </property>
-  </action>
-  <action name="actionExit">
-   <property name="text">
-    <string>Zakończ</string>
-   </property>
-   <property name="toolTip">
-    <string>Zakończ działanie programu</string>
    </property>
   </action>
   <action name="actionRules">
@@ -491,6 +498,16 @@
   <action name="actionAboutAuthors">
    <property name="text">
     <string>O autorach</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Zakończ program</string>
+   </property>
+  </action>
+  <action name="actionEndGame">
+   <property name="text">
+    <string>Zakończ grę</string>
    </property>
   </action>
  </widget>

@@ -3,6 +3,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +22,8 @@ public:
     void setLabelAccount();
     void setLabelPosition();
     void updateDisplayPropertyList();
+    void updateButtons();
+    bool firstRun;
 
 private slots:
     void onPushButtonThrowADiceClicked();
@@ -30,6 +33,12 @@ private slots:
     void onPushButtonBuyPropertyClicked();
 
     void onPushButtonBuyHouseClicked();
+
+    void onPushButtonEndMoveClicked();
+
+    void onActionExitTriggered();
+
+    void onActionResetTriggered();
 
 private:
     Ui::MainWindow *ui;

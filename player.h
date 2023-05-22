@@ -35,7 +35,7 @@ public:
     void setNrOfOwnedProperties(int n);
     int getNrOfOwnedProperties() const;
 
-    std::vector<listElement> getOwnedProperties() const;
+    std::vector<listElement> &getOwnedProperties();
 
     void makeMove(QLabel* label, QLabel* pawn); //throw a dice
     void sellProperty(QLabel *label);

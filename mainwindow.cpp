@@ -99,7 +99,7 @@ void MainWindow::updateDisplayPropertyList()
         break;
     }
 
-    std::vector<listElement> tmpList = Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].getOwnedProperties();
+    std::vector<listElement> & tmpList = Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].getOwnedProperties();
     QString str;
     for(listElement &el : tmpList){
         str = QString::fromStdString(el.propertyName+" domy: "+std::to_string(el.boughtHouses)+" czynsz: "+std::to_string(el.totalValue));
@@ -288,6 +288,11 @@ void MainWindow::onActionResetTriggered()
 
         ui->labelCurrentPlayerMoveInfo->setText("Trwa rzut gracza 1");
         ui->labelNotification->setText("");
+
+        ui->listWidget1->clear();
+        ui->listWidget2->clear();
+        ui->listWidget3->clear();
+        ui->listWidget4->clear();
 
         ui->pushButtonThrowADice->setDisabled(false);
         ui->pushButtonBuyHouse->setDisabled(true);

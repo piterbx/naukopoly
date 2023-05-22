@@ -229,7 +229,7 @@ int Player::getNrOfOwnedProperties() const
     return ownedProperties.size();
 }
 
-std::vector<listElement> Player::getOwnedProperties() const
+std::vector<listElement> & Player::getOwnedProperties()
 {
     return ownedProperties;
 }

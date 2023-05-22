@@ -75,8 +75,20 @@ void Player::makeMove(QLabel* label, QLabel *pawn)
 
         srand(time(NULL));
         int move = (int)rand()%(6-1+1)+1;
-        this->setPosition(this->getPosition()+move); // from 1 to 6
+        int prevPosition = this->getPosition();
+        this->setPosition(prevPosition+move); // from 1 to 6
+
         info = QString::fromStdString("Gracz "+std::to_string(this->id+1)+" rusza się o "+std::to_string(move)+" na pole "+std::to_string(this->getPosition()));
+
+        //check if player go through start field
+        if((prevPosition+move)>=40){
+            this->setAccountBalance(this->getAccountBalance()+200);
+            info += QString::fromStdString("\nPrzejście przez start +200");
+        }
+
+        //action on specific field
+        //checkIfBankrupt();
+
         label->setText(info);
 
         updatePawnPosition(pawn, move);
@@ -212,7 +224,7 @@ void Player::updatePawnPosition(QLabel *pawn, int move)
     case 38: xx=940; yy=460; break;
     case 39: xx=940; yy=510; break;
     }
-    switch(Game::getInstance()->currentPlayer){
+    switch(Game::getInstance()->getCurrentPlayer()){
         // dla 0 normalne
     case 1: xx+=2; break;
     case 2: yy-=2; break;

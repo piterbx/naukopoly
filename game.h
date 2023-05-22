@@ -10,6 +10,7 @@ class Game
 {
     bool beforeMove;
     int nrOfPlayers;
+    int currentPlayer; // is an index of player in playersTab
     std::vector<Player> playersTab; // tab of players
     std::vector<Field> fields;
 
@@ -31,7 +32,6 @@ public:
 
     int countPlayerFortune(int id);
 
-    int currentPlayer; // is an index of player in playersTab
     void setCurrentPlayer(int newCurrentPlayer);
     int getCurrentPlayer();
 
@@ -42,6 +42,7 @@ public:
     void setBeforeMove(bool newBeforeMove);
 
     void resetValues();
+    void loadFromFile();
 };
 
 #endif // GAME_H

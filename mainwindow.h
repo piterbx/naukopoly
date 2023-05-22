@@ -40,6 +40,10 @@ private slots:
 
     void onActionResetTriggered();
 
+    void onActionRulesTriggered();
+
+    void onActionAboutAuthorsTriggered();
+
 private:
     Ui::MainWindow *ui;
 };

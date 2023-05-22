@@ -19,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(ui->actionReset, &QAction::triggered, this, &MainWindow::onActionResetTriggered);
     QObject::connect(ui->actionEndGame, &QAction::triggered, this, &MainWindow::onActionResetTriggered);
 
+    QObject::connect(ui->actionRules, &QAction::triggered, this, &MainWindow::onActionRulesTriggered);
+    QObject::connect(ui->actionAboutAuthors, &QAction::triggered, this, &MainWindow::onActionAboutAuthorsTriggered);
+
     firstRun = true;
     onActionResetTriggered();
     firstRun = false;
@@ -32,13 +35,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::setLabelCurrentPlayer()
 {
-    QString tmp = QString::fromStdString("Trwa rzut gracza "+std::to_string(Game::getInstance()->currentPlayer+1));
+    QString tmp = QString::fromStdString("Trwa rzut gracza "+std::to_string(Game::getInstance()->getCurrentPlayer()+1));
     ui->labelCurrentPlayerMoveInfo->setText(tmp);
 }
 
 void MainWindow::setLabelAccount()
 {
-    Player tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->currentPlayer];
+    Player tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()];
     QString str;
     for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++){
         str = QString::fromStdString("Stan konta: "+std::to_string((int)Game::getInstance()->getPlayersTab()[i].getAccountBalance()));
@@ -61,7 +64,7 @@ void MainWindow::setLabelAccount()
 
 void MainWindow::setLabelPosition()
 {
-    Player tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->currentPlayer];
+    Player tmp = Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()];
     QString str;
     for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++){
         str = QString::fromStdString("Pozycja: "+std::to_string(Game::getInstance()->getPlayersTab()[i].getPosition()));
@@ -201,8 +204,8 @@ void MainWindow::onPushButtonEndMoveClicked(){
 }
 
 void MainWindow::updateButtons(){
-    Field &place = Game::getInstance()->getFields()[Game::getInstance()->getPlayersTab()[Game::getInstance()->currentPlayer].getPosition()];
-    int curr = Game::getInstance()->currentPlayer;
+    Field &place = Game::getInstance()->getFields()[Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()].getPosition()];
+    int curr = Game::getInstance()->getCurrentPlayer();
 
     if(Game::getInstance()->getBeforeMove()){
         ui->pushButtonEndMove->setDisabled(true);
@@ -225,7 +228,7 @@ void MainWindow::updateButtons(){
         ui->pushButtonThrowADice->setDisabled(true);
         ui->pushButtonBuyHouse->setDisabled(true);
 
-        if(place.getOwner()==-1){
+        if(place.getOwner()==-1 && place.getCanBePurchased()){
             ui->pushButtonBuyProperty->setDisabled(false);
         } else {
             ui->pushButtonBuyProperty->setDisabled(true);
@@ -298,3 +301,24 @@ void MainWindow::onActionResetTriggered()
         ui->pushButtonBuyHouse->setDisabled(true);
     }
 }
+
+void MainWindow::onActionRulesTriggered()
+{
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Zasady gry");
+    msgBox.setText("Zasady gry");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.exec();
+}
+
+void MainWindow::onActionAboutAuthorsTriggered()
+{
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("O Autorach");
+    msgBox.setText("O Autorach");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.exec();
+}
+

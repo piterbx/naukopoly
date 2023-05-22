@@ -6,4 +6,7 @@
         <file>img/p3.png</file>
         <file>img/p4.png</file>
     </qresource>
+    <qresource prefix="/files">
+        <file>files/fields.csv</file>
+    </qresource>
 </RCC>

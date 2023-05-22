@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="enabled">
     <bool>true</bool>
@@ -111,6 +114,9 @@
        <height>24</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="text">
       <string>Kup posesję</string>
      </property>
@@ -123,6 +129,9 @@
        <width>80</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Rzuć kostką</string>
@@ -137,6 +146,9 @@
        <height>24</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="text">
       <string>Sprzedaj</string>
      </property>
@@ -149,6 +161,9 @@
        <width>80</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Kup domek</string>
@@ -163,6 +178,9 @@
        <height>24</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="text">
       <string>Zakończ ruch</string>
      </property>
@@ -173,14 +191,20 @@
      <rect>
       <x>570</x>
       <y>420</y>
-      <width>131</width>
+      <width>161</width>
       <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <family>Verdana</family>
+      <pointsize>11</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 11pt &quot;Verdana&quot;;</string>
     </property>
     <property name="text">
      <string>Trwa rzut gracza 1</string>
@@ -346,7 +370,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">text-align: center;</string>
+     <string notr="true">text-align: center;
+font: 9pt &quot;Verdana&quot;;</string>
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

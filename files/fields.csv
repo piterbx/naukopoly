@@ -1,0 +1,41 @@
+Name;Price;CanBePurchased
+Start;0;0
+Uniwersytet Rzeszowski;60;1
+Wygrana na Loterii;200;0
+Politechnika Rzeszowska;60;1
+Karta specjalna;0;0
+Podatek;200;0
+Uniwersytet Łódzki;100;1
+Bilet na powrót do domu;50;0
+Politechnika Łódzka;100;1
+Akademia Sztuk Pięknych;130;1
+Więzienie;0;0
+Politechnika Gdańska;140;1
+Karta specjalna;0;0
+Uniwersytet Gdański;160;1
+Akademia Muzyczna;170;1
+Podatek;200;0
+Politechnika Poznańska;180;1
+Bilet na powrót do domu;50;0
+Uniwersytet Przyrodniczy;190;1
+Uniwersytet Ekonomiczny;200;1
+Płatny parking;80;0
+Uniwersytet Jagielloński;200;1
+Karta specjalna;0;0
+AGH;210;1
+Politechnika Krakowska;210;1
+Podatek;200;0
+UMCS;220;1
+Politechnika Lubelska;220;1
+Kazik;40;0
+Uniwersytet Medyczny;230;1
+Idź do więzienia;0;0
+Politechnika Warszawska;240;1
+SGH;250;1
+Syrenka warszawska;50;0
+WAT;250;1
+Podatek;200;0
+Karta specjalna;0;0
+Uniwersytet Wrocławski;260;1
+Bilet na powrót do domu;50;0
+Politechnika Wrocławska;270;1

@@ -252,6 +252,17 @@ void MainWindow::updateButtons(){
     }
 }
 
+void MainWindow::makeOkDialog(std::string t, std::string content)
+{
+    QMessageBox msgBox;
+    msgBox.setWindowTitle(QString::fromStdString(t));
+    msgBox.setText(QString::fromStdString(content));
+    msgBox.setWindowIcon(QIcon(":/img/img/icon.png"));
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.exec();
+}
+
 void MainWindow::onActionExitTriggered()
 {
     QCoreApplication::quit();
@@ -263,6 +274,7 @@ void MainWindow::onActionResetTriggered()
     std::string txt;
 
     proceed.setWindowTitle("Rozpocznij nową grę");
+    proceed.setWindowIcon(QIcon(":/img/img/icon.png"));
 
     if(!firstRun){
         proceed.setWindowTitle("Wyniki gry");
@@ -310,21 +322,11 @@ void MainWindow::onActionResetTriggered()
 
 void MainWindow::onActionRulesTriggered()
 {
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("Zasady gry");
-    msgBox.setText("Zasady gry");
-    msgBox.setStandardButtons(QMessageBox::Ok);
-    msgBox.setDefaultButton(QMessageBox::Ok);
-    msgBox.exec();
+    makeOkDialog("Zasady gry", "content");
 }
 
 void MainWindow::onActionAboutAuthorsTriggered()
 {
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("O Autorach");
-    msgBox.setText("O Autorach");
-    msgBox.setStandardButtons(QMessageBox::Ok);
-    msgBox.setDefaultButton(QMessageBox::Ok);
-    msgBox.exec();
+    makeOkDialog("O autorach", "content");
 }
 

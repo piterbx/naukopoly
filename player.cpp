@@ -112,7 +112,7 @@ void Player::sellProperty(QLabel* label)
         place.setHouses(0);
         this->accountBalance += place.getPropertyPrice();
 
-        str = QString::fromStdString("Sprzedano posesje. Dodano "+std::to_string(place.getPropertyPrice())+" do konta gracza "+std::to_string(this->id+1));
+        str = QString::fromStdString("Sprzedano posesje. \nDodano "+std::to_string(place.getPropertyPrice())+" do konta gracza "+std::to_string(this->id+1));
         label->setText(str);
     } else {
         str = QString::fromStdString("Nie można sprzedać");

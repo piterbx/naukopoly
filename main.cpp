@@ -8,7 +8,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    w.setWindowTitle("Monopoly");
+    w.setWindowTitle("naukopoly");
+    w.setWindowIcon(QIcon(":/img/img/icon.png"));
     w.show();
     return a.exec();
 }

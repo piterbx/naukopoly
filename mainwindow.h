@@ -18,12 +18,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    bool firstRun;
+
     void setLabelCurrentPlayer();
     void setLabelAccount();
     void setLabelPosition();
     void updateDisplayPropertyList();
     void updateButtons();
-    bool firstRun;
+    void makeOkDialog(std::string t, std::string content);
+
     void closeEvent(QCloseEvent *event);
 
 private slots:

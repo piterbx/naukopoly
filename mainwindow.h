@@ -24,6 +24,7 @@ public:
     void updateDisplayPropertyList();
     void updateButtons();
     bool firstRun;
+    void closeEvent(QCloseEvent *event);
 
 private slots:
     void onPushButtonThrowADiceClicked();

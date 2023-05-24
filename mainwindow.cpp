@@ -2,6 +2,8 @@
 #include "./ui_mainwindow.h"
 #include "game.h"
 
+#include <QCloseEvent>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -31,6 +33,20 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::closeEvent (QCloseEvent *event)
+{
+    QMessageBox msg;
+    msg.setWindowTitle("Koniec");
+    msg.setText("Czy na pewno chcesz zakończyć działanie programu?");
+    msg.setStandardButtons(QMessageBox::Yes);
+    msg.addButton(QMessageBox::No);
+
+    msg.setDefaultButton(QMessageBox::No);
+
+    if (msg.exec() != QMessageBox::Yes) event->ignore();
+    else event->accept();
 }
 
 void MainWindow::setLabelCurrentPlayer()
@@ -238,23 +254,13 @@ void MainWindow::updateButtons(){
 
 void MainWindow::onActionExitTriggered()
 {
-    QMessageBox proceed;
-    proceed.setWindowTitle("Koniec");
-    proceed.setText("Czy na pewno chcesz zakończyć działanie programu?");
-    proceed.setStandardButtons(QMessageBox::Yes);
-    proceed.addButton(QMessageBox::No);
-
-    proceed.setDefaultButton(QMessageBox::No);
-
-    if(proceed.exec() == QMessageBox::Yes){
-        QCoreApplication::quit();
-    }
+    QCoreApplication::quit();
 }
 
 void MainWindow::onActionResetTriggered()
 {
     QMessageBox proceed;
-    QString txt;
+    std::string txt;
 
     proceed.setWindowTitle("Rozpocznij nową grę");
 
@@ -269,7 +275,7 @@ void MainWindow::onActionResetTriggered()
         txt+="<p>Start gry po naciśnięciu przycisku</p><p>Zasady gry w zakładce Informacje u góry po rozpoczęciu gry</p>";
     }
 
-    proceed.setText(txt);
+    proceed.setText(QString::fromStdString(txt));
 
     proceed.setStandardButtons(QMessageBox::Yes);
     if(!firstRun) proceed.addButton(QMessageBox::No);

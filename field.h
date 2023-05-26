@@ -4,6 +4,11 @@
 #include "game.h"
 using namespace std;
 
+struct Card{
+    string info;
+    int money;
+};
+
 class Field{
 private:
         string fieldName; // "Politechnika" "Lubelska"
@@ -15,6 +20,7 @@ private:
         int housePrice;
         int totalValue; // price of house +
         // tax = 0.1 * totalValue
+        vector<Card> cards;
 public:
     Field();
     // set values

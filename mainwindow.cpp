@@ -322,7 +322,7 @@ void MainWindow::onActionResetTriggered()
 
 void MainWindow::onActionRulesTriggered()
 {
-    makeOkDialog("Zasady gry", "content");
+    makeOkDialog("Zasady gry", "Gra jest 4osobowa.\nGracze pokolei rzucają kostką (1-6).\nKażdy gracz podczas swojego rzutu może kupić pole, jeśli nie jest to pole specjalne lub pole nie zostało kupione przez innego gracza.\nPrzed każdym rzutem kostką gracz może kupić dom (gdy znajduje się na tym polu).\nNa jednym polu mogą znajdować się maksymalnie 3 domy.\nGracz może również odsprzedać swoje pole do banku za cenę, za którą je nabył (bez wartości domów), ale musi znajdować na tym polu.\nStanięcie na pole innego gracza wiąże się z zapłatą czynszu temu graczowi w zależności od pola i ilości domów na polu. Gdy gracz stanie na polach: Wygrana na loterii, Kazik, Mała syrenka, losowana jest kwota, która zostanie dodana do konta gracza. Jeśli gracz stanie na polach Bilet na powrót do domu, wylosowana kwota zostanie odjęta od konta tego gracza.\nStając na polu Podatek podbierany jest podatek 10procentowy z majątku gracza.\nPole Idź do więzienie oznacza, że gracz transportowany jest do więzienia na 3 kolejki (nie pobiera kwoty należnej graczom po przejściu przez pole Start).\n\nGracz po przejściu przez pole Start gracz otrzymuje 200monet.\nGra kończy się w momencie w którym ustalą to wspólnie gracze. Wygrywa osoba z największym majątkiem");
 }
 
 void MainWindow::onActionAboutAuthorsTriggered()

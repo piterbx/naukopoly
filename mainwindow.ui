@@ -111,7 +111,7 @@
     <widget class="QPushButton" name="pushButtonBuyProperty">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>190</x>
        <y>30</y>
        <width>80</width>
        <height>24</height>
@@ -149,7 +149,7 @@
     <widget class="QPushButton" name="pushButtonSellProperty">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>280</x>
        <y>30</y>
        <width>80</width>
        <height>24</height>
@@ -168,7 +168,7 @@
     <widget class="QPushButton" name="pushButtonBuyHouse">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>370</x>
        <y>30</y>
        <width>80</width>
        <height>24</height>
@@ -187,7 +187,7 @@
     <widget class="QPushButton" name="pushButtonEndMove">
      <property name="geometry">
       <rect>
-       <x>370</x>
+       <x>100</x>
        <y>30</y>
        <width>80</width>
        <height>24</height>

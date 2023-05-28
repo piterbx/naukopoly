@@ -166,6 +166,8 @@ void Player::buyHouse(QLabel *label)
                         break;
                     }
                 }
+            } else {
+                str = QString::fromStdString("Maksymalnie można kupić 3 domy");
             }
         }
     } else {

@@ -6,6 +6,7 @@
 #include "player.h"
 #include "game.h"
 
+
 Player::Player()
 {
     //setting default values for new game

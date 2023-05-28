@@ -49,7 +49,9 @@ void Field::makeAction(QLabel *labelField)
     case 37:
     case 39: {
         if(this->owner != player.getId() && this->owner !=-1){
-            player.setAccountBalance(player.getAccountBalance() - this->totalValue);
+
+            if(this->totalValue > player.getAccountBalance()) player.setAccountBalance(player.getAccountBalance() - this->totalValue);
+            //else player.handleBankrupt();
 
             vector<Player> tab = Game::getInstance()->getPlayersTab();
             tab[this->owner].setAccountBalance(tab[this->owner].getAccountBalance()+this->totalValue);
@@ -77,7 +79,9 @@ void Field::makeAction(QLabel *labelField)
 
         int price = rand()%101+30;
 
-        player.setAccountBalance(player.getAccountBalance() + price);
+        if(price > player.getAccountBalance()) player.setAccountBalance(player.getAccountBalance() - price);
+        //else player.handleBankrupt();
+
         str = QString::fromStdString("Gracz "+currPlIdStr+": -"+to_string(price)+" monet");
         break;
     }
@@ -92,8 +96,7 @@ void Field::makeAction(QLabel *labelField)
         //display on screen info
         player.setAccountBalance(player.getAccountBalance() + tmp.money);
         string tmpStd = "Treść karty: "+tmp.info+"\nGracz "+currPlIdStr+": ";
-        if(idx>9) tmpStd += "-";
-        else tmpStd += "+";
+        if(tmp.money>0) tmpStd += "+";
         tmpStd+=to_string(tmp.money)+" monet";
         str = QString::fromStdString(tmpStd);
         break;

@@ -91,6 +91,11 @@
        <height>91</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid #1c5d99;
+background-color:#ffffff;
+color: #000000;</string>
+     </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::NoSelection</enum>
      </property>
@@ -278,6 +283,11 @@
        <height>101</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid rgb(94, 136, 91);
+background-color:#ffffff;
+color: #000000;</string>
+     </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::NoSelection</enum>
      </property>
@@ -330,6 +340,11 @@
        <height>111</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid #f3b150;
+background-color:#ffffff;
+color: #000000;</string>
+     </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::NoSelection</enum>
      </property>
@@ -381,6 +396,11 @@
        <width>271</width>
        <height>91</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid #9a3b2a;
+background-color:#ffffff;
+color: #000000;</string>
      </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::NoSelection</enum>

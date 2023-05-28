@@ -42,6 +42,7 @@ public:
     void buyProperty(QLabel *label);
     void buyHouse(QLabel *label);
 
+    void handleBankrupt();
 private:
     void updatePawnPosition(QLabel *pawn, int move);
 };

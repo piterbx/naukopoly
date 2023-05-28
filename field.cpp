@@ -2,6 +2,8 @@
 #include <iostream>
 #include "game.h"
 
+#include <QFile>
+
 int Field::getTotalValue() const
 {
     return totalValue;
@@ -12,10 +14,14 @@ int Field::getHousePrice()
     return housePrice;
 }
 
-void Field::makeAction()
+void Field::makeAction(QLabel *labelField)
 {
-
+    srand(time(NULL));
     Player &player = Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()];
+
+    QString str;
+    string currPlIdStr = to_string(player.getId()+1);
+    string ownPlIdStr = to_string(this->owner+1);
 
     switch(player.getPosition()){
     case 0: // start;
@@ -47,6 +53,9 @@ void Field::makeAction()
 
             vector<Player> tab = Game::getInstance()->getPlayersTab();
             tab[this->owner].setAccountBalance(tab[this->owner].getAccountBalance()+this->totalValue);
+
+            string tmpStr = to_string(this->totalValue);
+            str = QString::fromStdString("Gracz "+currPlIdStr+" stanął na polu gracza "+ownPlIdStr+". Czynsz wynosi "+tmpStr+" monet.\nGracz "+currPlIdStr+": -"+tmpStr+" monet\nGracz "+ownPlIdStr+": +"+tmpStr+" monet");
         }
         break;
     }
@@ -54,11 +63,11 @@ void Field::makeAction()
     case 2:
     case 28:
     case 33:{
-        int price = rand()%10;//cause from 0-9 the is positive cards
+        int price = rand()%101+30;
         //Wygrałeś na loterii: price
-        Card tmp = this->cards[price];
 
-        player.setAccountBalance(player.getAccountBalance() + tmp.money);
+        player.setAccountBalance(player.getAccountBalance() + price);
+        str = QString::fromStdString("Gracz "+currPlIdStr+": +"+to_string(price)+" monet");
         break;
     }
     case 7:
@@ -66,13 +75,12 @@ void Field::makeAction()
     case 38:{
         //negative fields
 
-        int price = rand()%10+10; //from 10-19
-        Card tmp = this->cards[price];
+        int price = rand()%101+30;
 
-        player.setAccountBalance(player.getAccountBalance() - tmp.money); //not price but money
+        player.setAccountBalance(player.getAccountBalance() + price);
+        str = QString::fromStdString("Gracz "+currPlIdStr+": -"+to_string(price)+" monet");
         break;
     }
-
         // cards
     case 4:
     case 12:
@@ -83,6 +91,11 @@ void Field::makeAction()
         Card tmp = this->cards[idx];
         //display on screen info
         player.setAccountBalance(player.getAccountBalance() + tmp.money);
+        string tmpStd = "Treść karty: "+tmp.info+"\nGracz "+currPlIdStr+": ";
+        if(idx>9) tmpStd += "-";
+        else tmpStd += "+";
+        tmpStd+=to_string(tmp.money)+" monet";
+        str = QString::fromStdString(tmpStd);
         break;
     }
         //tax
@@ -90,12 +103,42 @@ void Field::makeAction()
     case 15:
     case 25:
     case 35:{
-        //podatek
-        int tax =(int)player.getAccountBalance()*0.1;
+        int tax =(Game::getInstance()->countPlayerFortune(player.getId()))*0.1;
         player.setAccountBalance(player.getAccountBalance()-tax);
+        str = QString::fromStdString("Gracz "+currPlIdStr+" stanął na polu Podatek \nGracz "+currPlIdStr+": -"+to_string(tax)+" monet");
         break;
 
     }
+    case 30:
+        //go to prison
+        player.setPrisonTime(4);
+        player.setPosition(10);
+        str = QString::fromStdString("Gracz "+currPlIdStr+" idzie do więzienia na 3 rundy");
+    }
+
+    labelField->setText(str);
+}
+
+void Field::loadCards()
+{
+    QFile file(":/files/files/cards.csv");
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
+
+        QByteArray line = file.readLine(); //for header of file
+        for(int i=0;i<20;i++){//eof
+            line = file.readLine();
+
+            QList<QByteArray> tmpArray = line.split(';');
+
+            int idx=0;
+            Card tmp;
+            tmp.info = tmpArray[idx].toStdString();
+            idx++;
+            tmp.money = tmpArray[idx].toInt();
+
+            cards.push_back(tmp);
+        }
+        file.close();
     }
 }
 
@@ -108,68 +151,7 @@ Field::Field()
     totalValue = rent;
 
     //cards
-    Card c;
-    c.info = "Wygrałeś na loterii!";
-    c.money = 130;
-    cards.push_back(c);
-    c.info = "Przylepił Ci się banknot do buta";
-    c.money = 20;
-    cards.push_back(c);
-    c.info = "Znalazłeś banknot";
-    c.money = 10;
-    cards.push_back(c);
-    c.info = "Wygrałeś w konkursie";
-    c.money = 50;
-    cards.push_back(c);
-    c.info = "Stary znajomy oddał ci pieniądze";
-    c.money = 30;
-    cards.push_back(c);
-    c.info = "Kolega stawia Ci soczek";
-    c.money = 15;
-    cards.push_back(c);
-    c.info = "Wygrałeś zakład";
-    c.money = 40;
-    cards.push_back(c);
-    c.info = "Znalezisko z Juwenalii";
-    c.money = 10;
-    cards.push_back(c);
-    c.info = "Dostałeś stypendium";
-    c.money = 120;
-    cards.push_back(c);
-    c.info = "Banknot przyczepił się do szyby";
-    c.money = 20;
-    cards.push_back(c);
-    //negative
-    c.info = "Masz dziurą kieszeń!";
-    c.money = 30;
-    cards.push_back(c);
-    c.info = "Oddałeś koledze pieniądze";
-    c.money = 20;
-    cards.push_back(c);
-    c.info = "Wyszedłeś na Juwenalia";
-    c.money = 50;
-    cards.push_back(c);
-    c.info = "";
-    c.money = 50;
-    cards.push_back(c);
-    c.info = "";
-    c.money = 30;
-    cards.push_back(c);
-    c.info = "";
-    c.money = 15;
-    cards.push_back(c);
-    c.info = "";
-    c.money = 40;
-    cards.push_back(c);
-    c.info = "";
-    c.money = 10;
-    cards.push_back(c);
-    c.info = "Kupiłeś ECTSY";
-    c.money = 100;
-    cards.push_back(c);
-    c.info = "";
-    c.money = 20;
-    cards.push_back(c);
+    loadCards();
 }
 
 void Field::setFieldName(string inputName)

@@ -37,7 +37,7 @@ public:
 
     std::vector<listElement> &getOwnedProperties();
 
-    void makeMove(QLabel* label, QLabel* pawn); //throw a dice
+    void makeMove(QLabel* label, QLabel* pawn, QLabel *labelField); //throw a dice
     void sellProperty(QLabel *label);
     void buyProperty(QLabel *label);
     void buyHouse(QLabel *label);

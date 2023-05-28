@@ -9,5 +9,6 @@
     </qresource>
     <qresource prefix="/files">
         <file>files/fields.csv</file>
+        <file>files/cards.csv</file>
     </qresource>
 </RCC>

@@ -1,5 +1,6 @@
 #ifndef FIELD_H
 #define FIELD_H
+#include "qlabel.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -21,6 +22,7 @@ private:
         int totalValue; // price of house +
         // tax = 0.1 * totalValue
         vector<Card> cards;
+        void loadCards();
 public:
     Field();
     // set values
@@ -40,7 +42,8 @@ public:
     string getFieldName();
     int getTotalValue() const;
     int getHousePrice();
-    void makeAction();
+
+    void makeAction(QLabel *labelField);
 };
 
 #endif // FIELD_H

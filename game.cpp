@@ -56,8 +56,11 @@ int Game::getCurrentPlayer()
 
 void Game::switchPlayer()
 {
-    currentPlayer = (currentPlayer+1)%nrOfPlayers;
     beforeMove = true;
+    do {
+        currentPlayer = (currentPlayer+1)%nrOfPlayers;
+        if(playersTab[currentPlayer].getPrisonTime()>0) playersTab[currentPlayer].setPrisonTime(playersTab[currentPlayer].getPrisonTime()-1);
+    } while(playersTab[currentPlayer].getPrisonTime()>0);
 }
 
 bool Game::getBeforeMove()

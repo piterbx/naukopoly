@@ -66,7 +66,7 @@ void Player::setNrOfOwnedProperties(int n)
     else ownedProperties.resize(n);
 }
 
-void Player::makeMove(QLabel* label, QLabel *pawn)
+void Player::makeMove(QLabel* label, QLabel *pawn, QLabel *labelField)
 {
     //this = current player
     QString info;
@@ -82,11 +82,12 @@ void Player::makeMove(QLabel* label, QLabel *pawn)
 
         //check if player go through start field
         if((prevPosition+move)>=40){
-            this->setAccountBalance(this->getAccountBalance()+200);
-            info += QString::fromStdString("\nPrzejście przez start +200");
+            this->setAccountBalance(this->getAccountBalance()+50);
+            info += QString::fromStdString("\nPrzejście przez start +50");
         }
 
         //action on specific field
+        Game::getInstance()->getFields()[this->getPosition()].makeAction(labelField);
         //checkIfBankrupt();
 
         label->setText(info);
@@ -215,7 +216,7 @@ void Player::updatePawnPosition(QLabel *pawn, int move)
     case 27: xx=730; yy=20; break;
     case 28: xx=790; yy=20; break;
     case 29: xx=850; yy=20; break;
-    case 30: xx=920; yy=20; break;
+    case 30: xx=920; yy=20; break;//go to prison
     case 31: xx=940; yy=90; break;
     case 32: xx=940; yy=140; break;
     case 33: xx=940; yy=200; break;
@@ -226,6 +227,7 @@ void Player::updatePawnPosition(QLabel *pawn, int move)
     case 38: xx=940; yy=460; break;
     case 39: xx=940; yy=510; break;
     }
+    if(this->prisonTime>0){xx=340; yy=560;}//when player in prison
     switch(Game::getInstance()->getCurrentPlayer()){
         // dla 0 normalne
     case 1: xx+=2; break;

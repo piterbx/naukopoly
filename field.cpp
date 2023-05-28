@@ -1,5 +1,6 @@
 #include "field.h"
 #include <iostream>
+#include "game.h"
 
 int Field::getTotalValue() const
 {
@@ -14,7 +15,7 @@ int Field::getHousePrice()
 void Field::makeAction()
 {
 
-    int &player = Game::getInstance()->getCurrentPlayer();
+    Player &player = Game::getInstance()->getPlayersTab()[Game::getInstance()->getCurrentPlayer()];
 
     switch(player.getPosition()){
     case 0: // start;
@@ -41,32 +42,34 @@ void Field::makeAction()
     case 34:
     case 37:
     case 39: {
-        if(this->owner != currentPlayer && this->owner !=-1){ // should we use varable from line 17 instead of currentPlayer
-            player.setAccountBalance(player.getAccountBalance - this->totalValue);
+        if(this->owner != player.getId() && this->owner !=-1){
+            player.setAccountBalance(player.getAccountBalance() - this->totalValue);
+
             vector<Player> tab = Game::getInstance()->getPlayersTab();
-            tab[this.owner].setAccountBalance(tab[this->owner].setAccountBalance(tab[this->owner].getAccountBalance()+this.totalValue));
+            tab[this->owner].setAccountBalance(tab[this->owner].getAccountBalance()+this->totalValue);
         }
         break;
     }
-        // plus cards
+        // plus fields
     case 2:
     case 28:
     case 33:{
-        int price = rand()%100+30;
+        int price = rand()%10;//cause from 0-9 the is positive cards
         //Wygrałeś na loterii: price
         Card tmp = this->cards[price];
 
-        player.setAccountBalance(player.getAccountBalance + tmp.price);
+        player.setAccountBalance(player.getAccountBalance() + tmp.money);
         break;
     }
     case 7:
     case 17:
     case 38:{
-        int price = rand()%100+30;
+        //negative fields
+
+        int price = rand()%10+10; //from 10-19
         Card tmp = this->cards[price];
 
-        //Wygrałeś na loterii: price
-        player.setAccountBalance(player.getAccountBalance - tmp.price);
+        player.setAccountBalance(player.getAccountBalance() - tmp.money); //not price but money
         break;
     }
 
@@ -75,11 +78,11 @@ void Field::makeAction()
     case 12:
     case 22:
     case 36:{
-        int idx = rand()%10; //all cards
+        int idx = rand()%20; //all cards (20) from 0 to 19
 
         Card tmp = this->cards[idx];
         //display on screen info
-        player.setAccountBalance(player.getAccountBalance + tmp.money);
+        player.setAccountBalance(player.getAccountBalance() + tmp.money);
         break;
     }
         //tax

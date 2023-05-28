@@ -1,7 +1,7 @@
 #ifndef FIELD_H
 #define FIELD_H
 #include <string>
-#include "game.h"
+#include <vector>
 using namespace std;
 
 struct Card{

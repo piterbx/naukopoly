@@ -1,7 +1,13 @@
 #ifndef FIELD_H
 #define FIELD_H
 #include <string>
+#include <vector>
 using namespace std;
+
+struct Card{
+    string info;
+    int money;
+};
 
 class Field{
 private:
@@ -14,6 +20,7 @@ private:
         int housePrice;
         int totalValue; // price of house +
         // tax = 0.1 * totalValue
+        vector<Card> cards;
 public:
     Field();
     // set values
@@ -33,6 +40,7 @@ public:
     string getFieldName();
     int getTotalValue() const;
     int getHousePrice();
+    void makeAction();
 };
 
 #endif // FIELD_H

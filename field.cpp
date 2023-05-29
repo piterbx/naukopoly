@@ -22,6 +22,7 @@ void Field::makeAction(QLabel *labelField)
     QString str;
     string currPlIdStr = to_string(player.getId()+1);
     string ownPlIdStr = to_string(this->owner+1);
+    string bankruptStr;
 
     switch(player.getPosition()){
     case 0: // start;
@@ -49,11 +50,10 @@ void Field::makeAction(QLabel *labelField)
     case 37:
     case 39: {
         if(this->owner != player.getId() && this->owner !=-1){
+            if(this->totalValue > player.getAccountBalance()) bankruptStr = player.handleBankrupt(this->totalValue);
+            player.setAccountBalance(player.getAccountBalance() - this->totalValue);
 
-            if(this->totalValue > player.getAccountBalance()) player.setAccountBalance(player.getAccountBalance() - this->totalValue);
-            //else player.handleBankrupt();
-
-            vector<Player> tab = Game::getInstance()->getPlayersTab();
+            vector<Player> & tab = Game::getInstance()->getPlayersTab();
             tab[this->owner].setAccountBalance(tab[this->owner].getAccountBalance()+this->totalValue);
 
             string tmpStr = to_string(this->totalValue);
@@ -65,7 +65,7 @@ void Field::makeAction(QLabel *labelField)
     case 2:
     case 28:
     case 33:{
-        int price = rand()%101+30;
+        int price = rand()%71+30;
         //Wygrałeś na loterii: price
 
         player.setAccountBalance(player.getAccountBalance() + price);
@@ -77,10 +77,10 @@ void Field::makeAction(QLabel *labelField)
     case 38:{
         //negative fields
 
-        int price = rand()%101+30;
+        int price = rand()%71+30;
 
-        if(price > player.getAccountBalance()) player.setAccountBalance(player.getAccountBalance() - price);
-        //else player.handleBankrupt();
+        if(player.getAccountBalance() - price < 0) bankruptStr = player.handleBankrupt(price);
+        player.setAccountBalance(player.getAccountBalance() - price);
 
         str = QString::fromStdString("Gracz "+currPlIdStr+": -"+to_string(price)+" monet");
         break;
@@ -94,7 +94,9 @@ void Field::makeAction(QLabel *labelField)
 
         Card tmp = this->cards[idx];
         //display on screen info
+        if(player.getAccountBalance() + tmp.money < 0 && tmp.money<0) bankruptStr = player.handleBankrupt(tmp.money);
         player.setAccountBalance(player.getAccountBalance() + tmp.money);
+
         string tmpStd = "Treść karty: "+tmp.info+"\nGracz "+currPlIdStr+": ";
         if(tmp.money>0) tmpStd += "+";
         tmpStd+=to_string(tmp.money)+" monet";
@@ -107,7 +109,9 @@ void Field::makeAction(QLabel *labelField)
     case 25:
     case 35:{
         int tax =(Game::getInstance()->countPlayerFortune(player.getId()))*0.1;
+        if(player.getAccountBalance() - tax < 0) bankruptStr = player.handleBankrupt(tax);
         player.setAccountBalance(player.getAccountBalance()-tax);
+
         str = QString::fromStdString("Gracz "+currPlIdStr+" stanął na polu Podatek \nGracz "+currPlIdStr+": -"+to_string(tax)+" monet");
         break;
 
@@ -119,6 +123,7 @@ void Field::makeAction(QLabel *labelField)
         str = QString::fromStdString("Gracz "+currPlIdStr+" idzie do więzienia na 3 rundy");
     }
 
+    str = str + QString::fromStdString(bankruptStr);
     labelField->setText(str);
 }
 

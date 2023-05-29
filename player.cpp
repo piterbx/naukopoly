@@ -61,6 +61,16 @@ int Player::getPrisonTime()
     return prisonTime;
 }
 
+void Player::setIfBankrupt(bool b)
+{
+    ifBankrupt = b;
+}
+
+bool Player::getIfBankrupt()
+{
+    return ifBankrupt;
+}
+
 void Player::setNrOfOwnedProperties(int n)
 {
     if(n==0) ownedProperties.clear();
@@ -72,7 +82,7 @@ void Player::makeMove(QLabel* label, QLabel *pawn, QLabel *labelField)
     //this = current player
     QString info;
 
-    if(this->prisonTime==0){
+    if(this->prisonTime<=0){
 
         srand(time(NULL));
         int move = (int)rand()%(6-1+1)+1;
@@ -89,7 +99,7 @@ void Player::makeMove(QLabel* label, QLabel *pawn, QLabel *labelField)
 
         //action on specific field
         Game::getInstance()->getFields()[this->getPosition()].makeAction(labelField);
-        //checkIfBankrupt();
+        //handleBankrupt() is in makeAction function;
 
         label->setText(info);
 
@@ -176,6 +186,34 @@ void Player::buyHouse(QLabel *label)
         str = "Nie jesteś właścicielem tej działki";
     }
     label->setText(str);
+}
+
+std::string Player::handleBankrupt(int cost) //value to subtract
+{
+    std::string str;
+    if(cost<0) cost *= -1; //to get only value without -
+    //selling properites if possible
+    if(this->getNrOfOwnedProperties() > 0){
+        while(this->getNrOfOwnedProperties()>0){
+            listElement &tmp = this->ownedProperties.front();
+            this->ownedProperties.pop_back();
+
+            Field &place = Game::getInstance()->getFields()[tmp.fieldIndex];
+            place.setOwner(-1);
+            place.setHouses(0);
+            this->accountBalance += place.getPropertyPrice();
+            if(this->accountBalance - cost > 0) break;
+        }
+        str = "\nSprzedano część majątku by móc opłacić należne koszty";
+        if(this->accountBalance - cost < 0){
+            this->ifBankrupt = true;
+            str = "\nPróba sprzedania posesji nie powiodła się.\nGracz "+std::to_string(this->getId()+1)+" przegrywa";
+        }
+    } else {
+        this->ifBankrupt = true;
+        str = "\nBrak środków do życia. Gracz "+std::to_string(this->getId()+1)+" przegrywa";
+    }
+    return str;
 }
 
 void Player::updatePawnPosition(QLabel *pawn, int move)

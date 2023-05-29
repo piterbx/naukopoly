@@ -60,7 +60,7 @@ void Game::switchPlayer()
     do {
         currentPlayer = (currentPlayer+1)%nrOfPlayers;
         if(playersTab[currentPlayer].getPrisonTime()>0) playersTab[currentPlayer].setPrisonTime(playersTab[currentPlayer].getPrisonTime()-1);
-    } while(playersTab[currentPlayer].getPrisonTime()>0);
+    } while(playersTab[currentPlayer].getPrisonTime()>0 || playersTab[currentPlayer].getIfBankrupt());
 }
 
 bool Game::getBeforeMove()
@@ -91,6 +91,7 @@ void Game::resetValues()
         tmp.setPosition(0);
         tmp.setPrisonTime(0);
         tmp.setNrOfOwnedProperties(0);
+        tmp.setIfBankrupt(false);
         playersTab.push_back(tmp);
     }
 

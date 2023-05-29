@@ -20,6 +20,7 @@ class Player
     int prisonTime;
     int nrOfOwnedProperties; //length of ownedProperties
     std::vector<listElement> ownedProperties; //list! of property indexes
+    bool ifBankrupt;
 public:
     Player();
     ~Player();
@@ -31,6 +32,8 @@ public:
     int getId();
     void setPrisonTime(int time);
     int getPrisonTime();
+    void setIfBankrupt(bool b);
+    bool getIfBankrupt();
 
     void setNrOfOwnedProperties(int n);
     int getNrOfOwnedProperties() const;
@@ -42,7 +45,7 @@ public:
     void buyProperty(QLabel *label);
     void buyHouse(QLabel *label);
 
-    void handleBankrupt();
+    std::string handleBankrupt(int cost); //returns info what must be sold
 private:
     void updatePawnPosition(QLabel *pawn, int move);
 };

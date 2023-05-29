@@ -83,6 +83,7 @@ void MainWindow::setLabelPosition()
     QString str;
     for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++){
         if(Game::getInstance()->getPlayersTab()[i].getPrisonTime()>0) str = QString::fromStdString("Pozycja: w więzieniu");
+        else if(Game::getInstance()->getPlayersTab()[i].getIfBankrupt()) str = QString::fromStdString("Gracz zbankrutował");
         else str = QString::fromStdString("Pozycja: "+std::to_string(Game::getInstance()->getPlayersTab()[i].getPosition()));
         switch(i){
         case 0:
@@ -167,6 +168,7 @@ void MainWindow::onPushButtonThrowADiceClicked()
     setLabelCurrentPlayer();
     Game::getInstance()->setBeforeMove(false);
     updateButtons();
+    updateDisplayPropertyList();
 }
 
 
@@ -212,6 +214,12 @@ void MainWindow::onPushButtonBuyHouseClicked()
 void MainWindow::onPushButtonEndMoveClicked(){
     //end move and switch player
     Game::getInstance()->switchPlayer();
+
+    //check if only one player has a positive account balance
+    int x=0; //is nr of players has negative balance
+    for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++) if(Game::getInstance()->getPlayersTab()[i].getIfBankrupt()) x++;
+    if(x>=3) onActionResetTriggered();
+
     setLabelAccount();
     setLabelPosition();
     setLabelCurrentPlayer();
@@ -279,8 +287,11 @@ void MainWindow::onActionResetTriggered()
     if(!firstRun){
         proceed.setWindowTitle("Wyniki gry");
         txt += "<b>Tabela wyników:</b>";
-            for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++){
-            txt+="<p>Gracz "+std::to_string(i+1)+" majątek: "+std::to_string(Game::getInstance()->countPlayerFortune(i))+" posiadłości: +"+std::to_string(Game::getInstance()->getPlayersTab()[i].getNrOfOwnedProperties())+"</p>";
+        for(int i=0;i<Game::getInstance()->getNrOfPlayers();i++){
+            txt+="<p>Gracz "+std::to_string(i+1);
+                if(Game::getInstance()->countPlayerFortune(i)<0) txt+= " bankrut";
+                else txt+= " majątek: "+std::to_string(Game::getInstance()->countPlayerFortune(i));
+            txt+=" posiadłości: +"+std::to_string(Game::getInstance()->getPlayersTab()[i].getNrOfOwnedProperties())+"</p>";
         }
         txt+="<br><br>Rozpocząć nową grę?";
     } else {
@@ -328,6 +339,6 @@ void MainWindow::onActionRulesTriggered()
 
 void MainWindow::onActionAboutAuthorsTriggered()
 {
-    makeOkDialog("O autorach", "content");
+    makeOkDialog("O autorach", "Piotr Bogusz <a href=\"https://github.com/piterbx\">https://github.com/piterbx</a><br>Jakub Biaduń <a href=\"https://github.com/jakubbiadun\">https://github.com/jakubbiadun</a><br><br> Użyte grafiki pochodzą ze strony <a href=\"https://pixabay.com\">https://pixabay.com</a> (logo, elementy planszy)");
 }
 
